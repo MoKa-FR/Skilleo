@@ -14,10 +14,11 @@ Ces documents sont **normatifs** : en cas de désaccord entre le code et la doc,
 | [`00-produit.md`](./00-produit.md) | Définition du produit, feature-noyau, boucle, satellites | 🟢 rédigé |
 | [`01-ux-principes.md`](./01-ux-principes.md) | Lois UX transversales, divulgation progressive, hiérarchie des actions | 🟢 rédigé |
 | [`02-interactions.md`](./02-interactions.md) | Grammaire de pointeur et de clavier : survol, focus, curseur, raccourcis | 🟢 rédigé |
-| `03-navigation.md` | Architecture de l'information, destinations, surfaces secondaires | 🟡 rédigeable en partie — surfaces secondaires bloquées, voir Q-03 |
-| `04-tokens.md` | Couleurs, typographie, espacement, rayons, ombres | 🔴 bloqué — voir Q-01 |
-| `05-composants.md` | Catalogue des composants, états, contrats comportementaux | 🔴 bloqué — dépend de `02` et `04` |
-| `06-ecrans.md` | Gabarits d'écran, ordre du contenu, états vides et d'erreur | 🔴 bloqué — dépend de `03` |
+| [`03-navigation.md`](./03-navigation.md) | Architecture de l'information, destinations, panneaux contextuels | 🟢 rédigé |
+| [`tokens/tokens.css`](./tokens/tokens.css) | **Valeurs canoniques des tokens** — consommé par le code (`D-27`) | 🟢 vivant |
+| [`04-tokens.md`](./04-tokens.md) | Pourquoi ces valeurs, et sous quelles règles les employer | 🟢 rédigé |
+| [`05-composants.md`](./05-composants.md) | Catalogue des composants, états, contrats comportementaux | 🟢 rédigé |
+| `06-ecrans.md` | Gabarits d'écran, ordre du contenu, états vides et d'erreur | 🟡 déblocable — prochain, dépend de Q-10 |
 | `07-motion.md` | Durées, easings, transitions, réduction du mouvement | 🔴 bloqué — voir Q-01 |
 | `08-conventions-code.md` | Organisation des dossiers, nommage, règles de dépendance | ⚪ non commencé |
 
@@ -33,15 +34,37 @@ Règle absolue : **aucun sujet n'apparaît dans deux documents.** Si un sujet se
 - `01-ux-principes` répond à *« comment on décide ? »* — pas à *« qu'est-ce qu'on a décidé ? »*
 - `02-interactions` répond à *« comment l'utilisateur agit ? »* — souris, clavier, focus
 - `03-navigation` répond à *« où va l'utilisateur ? »*
-- `04-tokens` répond à *« quelles valeurs ? »* — aucune règle de comportement ici
+- `tokens/tokens.css` répond à *« quelle valeur ? »* — **canonique**, consommé par le code (`D-27`)
+- `04-tokens` répond à *« pourquoi cette valeur, et comment l'employer ? »* — aucun chiffre ici
 - `05-composants` répond à *« quelles briques, dans quels états ? »*
 - `06-ecrans` répond à *« quel contenu, dans quel ordre ? »*
 - `07-motion` répond à *« comment ça bouge ? »*
 - `08-conventions-code` répond à *« où on écrit le code ? »*
-- `references/*` répond à *« qu'a-t-on observé ailleurs ? »* — **descriptif, jamais normatif.** Une valeur y figurant n'est pas applicable tant qu'elle n'est pas devenue un token dans `04-tokens.md`.
+- `references/*` répond à *« qu'a-t-on observé ailleurs ? »* — **descriptif, jamais normatif.** Une valeur y figurant n'est pas applicable tant qu'elle n'est pas entrée dans `tokens/tokens.css`.
 
 ---
 
+## Index inversé — quelles décisions contraignent quel document
+
+Généré depuis `DECISIONS.md`. À lire **avant** d'ouvrir un document : il donne les contraintes
+sans avoir à parcourir le journal.
+
+| Document | Décisions applicables | Questions bloquantes |
+|---|---|---|
+| `00-produit.md` | `D-01` `D-02` `D-03` `D-08` `D-21` `D-22` | — |
+| `01-ux-principes.md` | `D-12` | — |
+| `02-interactions.md` | `D-12` `D-13` `D-14` `D-15` `D-17` | — |
+| `03-navigation.md` | `D-09` `D-16` `D-21` `D-22` `D-23` | `Q-10` |
+| `04-tokens.md` | `D-04` `D-11` `D-24` `D-25` `D-26` `D-27` | `Q-01` `Q-10` |
+| `05-composants.md` | `D-11` `D-12` `D-14` `D-16` `D-23` `D-24` `D-26` | `Q-01` |
+| `06-ecrans.md` | `D-08` `D-09` `D-10` `D-13` `D-14` `D-15` `D-21` `D-22` `D-23` `D-26` | `Q-10` |
+| `07-motion.md` | — | `Q-01` |
+| `08-conventions-code.md` | `D-04` `D-20` `D-27` | — |
+
+Les décisions transversales `D-05` `D-06` `D-07` `D-18` `D-19` portent sur le projet
+et la documentation eux-mêmes, pas sur un document en particulier.
+
+---
 ## Niveaux de certitude
 
 Toute affirmation de nature factuelle sur une référence externe (notamment Trade Republic) porte un marqueur. **Une valeur non marquée est une erreur de rédaction.**

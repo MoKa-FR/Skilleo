@@ -5,6 +5,17 @@
 
 ---
 
+## Table des matières
+
+- [1. Ce que couvrent ces intrants — et ce qu'ils ne couvrent pas](#1-ce-que-couvrent-ces-intrants--et-ce-quils-ne-couvrent-pas)
+- [2. Méthode de mesure](#2-méthode-de-mesure)
+- [3. Couleurs `[MESURÉ]`](#3-couleurs-mesuré)
+- [4. Géométrie `[MESURÉ]`](#4-géométrie-mesuré)
+- [5. Motifs observés](#5-motifs-observés)
+- [6. Ce qui manque encore](#6-ce-qui-manque-encore)
+
+---
+
 ## 1. Ce que couvrent ces intrants — et ce qu'ils ne couvrent pas
 
 Les captures fournies le 2026-07-30 sont celles du **site marketing** `traderepublic.com/fr-fr`, plus **une page de connexion** de `app.traderepublic.com`.
@@ -57,14 +68,27 @@ viewport ≈ 1469 × 924 px CSS
 
 ## 3. Couleurs `[MESURÉ]`
 
+**Thème clair**
+
 | Rôle observé | Valeur | Où |
 |---|---|---|
-| Canvas clair | `#FFFFFF` **pur** | Sections claires, 58–64 % des pixels |
-| Canvas sombre | `#000000` **pur** | Sections sombres, 53 % des pixels |
-| Surface subtile claire | `#F5F5F5` à `#F8F8F8` | Conteneurs d'image, fond de carte |
-| Texte secondaire sur clair | `#9B9B9B` | Suite grise des paragraphes |
-| Inactif d'un sélecteur | `#CBCCD2` | `1W` `1M` `1Y` `Max` non sélectionnés |
+| Canvas | `#FFFFFF` **pur** | Sections claires, 58–64 % des pixels |
+| Surface subtile | `#F8F8F8` (plage `#F5F5F5`–`#F8F8F8`) | Conteneur d'image, échantillonné au centre |
+| Texte primaire | `#000000` | Titres, amorces de paragraphe |
+| Texte secondaire | `#9B9B9B` | Suite grise des paragraphes |
+| Texte tertiaire / inactif | `#CBCCD2` | `1W` `1M` `1Y` `Max` non sélectionnés |
 | Actif d'un sélecteur | `#2D2D2D` (antialiasé, cible `#000000`) | `1D` sélectionné |
+
+**Thème sombre**
+
+| Rôle observé | Valeur | Où |
+|---|---|---|
+| Canvas | `#000000` **pur** | Sections sombres, 53 % des pixels |
+| Texte primaire | `#FFFFFF` **pur** | Titres, amorces de paragraphe (capture 05) |
+| Texte secondaire | `#686A70` | Suite grise des paragraphes (capture 05) |
+| Surface subtile | **non observée** | Aucune surface élevée dans les sections sombres |
+
+**Le gris secondaire n'est pas le même dans les deux thèmes.** `#9B9B9B` sur blanc, `#686A70` sur noir. Ce n'est pas une inversion mécanique : les deux sont choisis pour leur contraste sur leur fond respectif. Un thème sombre obtenu en inversant les valeurs du thème clair serait faux.
 
 **Trois constats à ne pas manquer.**
 
@@ -82,13 +106,29 @@ Le fond de la capture 06 mesure `#0C0A07`, un noir légèrement chaud. **Ne pas 
 |---|---:|---:|
 | Gouttière latérale, texte du bandeau | 32 px | **16** |
 | Gouttière latérale, logo | 34 px | 17 |
+| Gouttière latérale, conteneur d'image | 27 px | 13,5 |
 | Gouttière droite, carte de téléchargement | 29 px | 14,5 |
 | Hauteur du bandeau d'annonce | 117 px | **58** |
 | Cap-height du logo | 27 px | 13,5 |
-| Centre vertical du logo | — | 92 |
-| **Rayon de bouton** | 31 px | **16** |
-| Largeur du conteneur d'image (capture 02) | 1107 px | 553 |
+| Largeur du conteneur d'image | 1107 px | **553** |
+| Hauteur du conteneur d'image | 1476 px | 738 |
+| **Rayon du conteneur d'image** | 24 px | **12** |
 | Interligne du titre de section | 136 px | **68** |
+| Interligne du corps de texte | 51 px | **25,5** |
+| Hauteur de glyphes du corps (ascendante→descendante) | 34–35 px | 17,0–17,5 |
+| Hauteur de glyphes du bandeau | 28 px | 14 |
+
+### 4.0 Rectification du 2026-07-30 — le rayon de bouton est retiré
+
+Une première passe avait consigné un « rayon de bouton : 16 px CSS » comme `[MESURÉ]`. **C'était faux et la valeur est retirée.**
+
+La bannière cookies est **coupée par le bord bas de la capture 01** — elle s'étend jusqu'à y = 1847 sur une image de 1848 px de haut. La région analysée mêlait donc le bouton, la carte qui le contient et le bord de l'image. Les 16 px provenaient d'une frontière indéterminée.
+
+**Aucune hauteur ni aucun rayon de contrôle n'est mesurable sur ce lot d'intrants.** Aucun bouton, aucun champ n'apparaît entièrement dans le cadre à une échelle connue.
+
+Le seul rayon fiable est celui du conteneur d'image de la capture 04 : ses deux coins sont dans le cadre et donnent des profils identiques au pixel — insertion de 24 px natifs de chaque côté, largeur pleine atteinte à 24 px de profondeur. Soit **12 px CSS**.
+
+C'est exactement le type d'erreur reproché au rapport de ChatGPT. Elle est consignée ici plutôt que corrigée en silence.
 
 ### 4.1 La gouttière est minuscule, et c'est contre-intuitif
 
@@ -105,11 +145,22 @@ C'est l'inverse de ce que suppose le rapport UI de ChatGPT, qui décrit des « m
 
 Répartition approximative **38 % / 15 % de vide / 47 %**. Les deux colonnes ne se touchent pas et ne sont pas de largeur égale.
 
-### 4.3 Typographie de titre
+### 4.3 Typographie — deux régimes d'interligne opposés
 
-Interligne mesuré à **68 px CSS**, pour une taille de police `[DÉDUIT]` de **70 à 76 px CSS** — d'où un ratio interligne/taille de **0,90 à 0,97**.
+C'est l'observation la plus utile de ce lot, parce qu'elle est **contre-intuitive et systématique**.
 
-C'est le point à retenir : **l'interligne est inférieur à la taille de police.** Les lignes se touchent presque. Combiné à une graisse très forte et à un tracking négatif, c'est ce qui produit la signature typographique de la marque, bien plus que le choix de la police elle-même.
+| Registre | Interligne | Hauteur de glyphes | Taille `[DÉDUIT]` | Ratio interligne/taille |
+|---|---:|---:|---:|---:|
+| Titre de section | **68** | 64–68 | 70–76 | **0,90–0,97** |
+| Corps de texte | **25,5** | 17,0–17,5 | 17–18 | **~1,45** |
+
+**Le grand texte est serré, le petit texte est aéré.** Les lignes d'un titre se touchent presque ; celles d'un paragraphe respirent normalement. Un système qui appliquerait un ratio unique — même 1,2 — raterait la signature dans les deux sens : titres mous, corps illisible.
+
+Combiné à une graisse forte et à un tracking négatif sur les grandes tailles, c'est ce qui produit l'empreinte typographique de la marque, bien plus que le choix de la police elle-même.
+
+**Rythme des paragraphes `[MESURÉ]`.** Entre deux lignes d'un même paragraphe : 25,5 px. Entre la dernière ligne d'un paragraphe et la première du suivant : **53–54 px**. Soit une marge de paragraphe d'environ **28 px** en plus de l'interligne. Le rythme est rigoureusement identique en thème clair (capture 02) et en thème sombre (capture 05).
+
+**Graisse du paragraphe à deux tons `[DÉDUIT]`.** Les deux tons paraissent de **graisse identique** — seule la couleur les distingue. Implémenter le dispositif avec un changement de graisse en plus de la couleur casserait l'effet : le regard doit accrocher un contraste de valeur, pas d'épaisseur.
 
 `[À VALIDER]` La police n'est pas identifiable de façon fiable sur ces captures. Un grotesque néo-classique, sans plus de précision. **Ne pas nommer de police dans la doc Skilleo tant qu'elle n'est pas identifiée.** Rappel : reproduire une grammaire visuelle est licite, redistribuer un fichier de police sous licence ne l'est pas.
 
@@ -136,6 +187,18 @@ Confirme la règle « pas de pilules partout », et donne un patron réutilisabl
 ### 5.3 Visualisation : trait nu
 
 Courbe de la carte produit : **un seul trait noir épais, fortement lissé.** Aucun axe, aucune grille, aucun libellé, aucun remplissage sous la courbe, aucune ombre. Une unique ligne pointillée gris clair sert de référence basse.
+
+### 5.3 bis La carte produit est un visuel marketing — rapports uniquement
+
+**Avertissement de méthode.** La carte de la capture 04 (`Compte-Titres`, montant, sélecteur, courbe) est un **asset marketing mis à l'échelle** pour remplir le conteneur d'image. Ses dimensions absolues n'ont aucune valeur : elles dépendent du facteur d'agrandissement de l'illustration, pas d'un rendu à 1:1.
+
+Seuls ses **rapports internes** sont exploitables :
+
+| Rapport `[MESURÉ]` | Valeur |
+|---|---|
+| Hauteur des chiffres du montant / hauteur du sélecteur | **≈ 2,0** |
+
+Autrement dit : la métrique dominante fait environ le double du texte de contrôle qui l'accompagne. C'est un rapport de hiérarchie transposable ; les pixels, non.
 
 ### 5.4 Métrique dominante
 
@@ -183,3 +246,5 @@ Par ordre d'utilité pour Skilleo. Détail dans `DECISIONS.md` `Q-01`.
 | Date | Modification |
 |---|---|
 | 2026-07-30 | Création. 6 captures du site marketing + page de connexion. Normalisation DPR 2 / 1469 px CSS déduite et cohérente sur 3 éléments indépendants. Couleurs et géométrie mesurées. Capture 06 exclue des mesures absolues. |
+| 2026-07-30 | **Rectification §4.0 : le « rayon de bouton 16 px » est retiré** — mesuré sur une région contaminée par le bord bas de la capture. Aucune hauteur ni rayon de contrôle n'est mesurable sur ce lot. |
+| 2026-07-30 | Ajouts mesurés : palette du thème sombre (texte secondaire `#686A70`, distinct du clair) · rayon du conteneur d'image = 12 px · interligne du corps = 25,5 px · marge de paragraphe ≈ 28 px · les deux régimes d'interligne opposés (§4.3) · la carte produit est un asset marketing, rapports uniquement (§5.3 bis). |

@@ -9,6 +9,18 @@ C'est la partie du système qui a le moins de référence, et donc celle où l'�
 
 ---
 
+## Table des matières
+
+- [1. Les deux règles fondatrices](#1-les-deux-règles-fondatrices)
+- [2. États d'un élément interactif](#2-états-dun-élément-interactif)
+- [3. Le curseur](#3-le-curseur)
+- [4. Grammaire clavier globale](#4-grammaire-clavier-globale)
+- [5. Grammaire clavier du noyau : répondre](#5-grammaire-clavier-du-noyau--répondre)
+- [6. Pointeur grossier et tactile](#6-pointeur-grossier-et-tactile)
+- [7. Ce qui n'est pas encore tranché](#7-ce-qui-nest-pas-encore-tranché)
+
+---
+
 ## 1. Les deux règles fondatrices
 
 ### 1.1 Parité des chemins

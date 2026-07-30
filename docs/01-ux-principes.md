@@ -7,6 +7,21 @@ Ce document répond à *« comment on décide ? »*. Il doit rester assez court 
 
 ---
 
+## Table des matières
+
+- [1. Les six lois](#1-les-six-lois)
+- [2. Divulgation progressive](#2-divulgation-progressive)
+- [3. Hiérarchie des actions](#3-hiérarchie-des-actions)
+- [4. Procédure d'admission d'une fonctionnalité](#4-procédure-dadmission-dune-fonctionnalité)
+- [5. Feedback et perception du système](#5-feedback-et-perception-du-système)
+- [6. Erreurs et récupération](#6-erreurs-et-récupération)
+- [7. États vides](#7-états-vides)
+- [8. Accessibilité et charge cognitive](#8-accessibilité-et-charge-cognitive)
+- [9. Anti-patterns interdits](#9-anti-patterns-interdits)
+- [10. Checklist d'un écran](#10-checklist-dun-écran)
+
+---
+
 ## 1. Les six lois
 
 ### Loi 1 — Une décision par écran
@@ -186,7 +201,7 @@ Un état vide est **une transition, pas une impasse**. Il contient toujours : ce
 - Aucune limite de temps sur une réponse, sauf si l'exercice a explicitement le temps pour objet.
 - Le mouvement respecte `prefers-reduced-motion` — détail dans `07-motion.md`.
 
-`[À VALIDER — Q-03]` Skilleo étant **desktop-first**, la grammaire clavier n'est pas un simple complément d'accessibilité : c'est probablement le mode d'interaction principal du noyau. Trade Republic, application mobile, n'offre **aucune** référence sur ce point. Voir `DECISIONS.md` Q-03.
+Skilleo étant une application desktop, la grammaire clavier n'est pas un complément d'accessibilité : c'est **le mode d'interaction principal du noyau** (`D-12`). Elle est spécifiée dans [`02-interactions.md`](./02-interactions.md), et le geste central — flèches puis `Entrée` — est arrêté par `D-14`.
 
 ---
 

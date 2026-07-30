@@ -5,6 +5,17 @@
 
 ---
 
+## Table des matières
+
+- [1. Définition](#1-définition)
+- [2. Feature-noyau](#2-feature-noyau)
+- [3. Boucle d'usage](#3-boucle-dusage)
+- [4. Modèle noyau et satellites](#4-modèle-noyau-et-satellites)
+- [5. Profils d'utilisateurs](#5-profils-dutilisateurs)
+- [6. Test de conformité](#6-test-de-conformité)
+
+---
+
 ## 1. Définition
 
 **Skilleo est une plateforme web de formation pratique à l'intelligence artificielle : elle pose une question à la fois, et met la théorie à portée de main quand l'utilisateur bloque.**
