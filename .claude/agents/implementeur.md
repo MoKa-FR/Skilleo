@@ -161,7 +161,8 @@ Rien ne se commit sans test qui couvre la décision concernée.
 - Conventionnels : `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`.
 - **Doc et code dans le même commit.** Un commit qui change le comportement sans toucher
   la doc correspondante est refusé — c'est la règle 3 de `docs/README.md`.
-- **Tu ne pousses jamais.** Tu commites, Mohamed pousse.
+- Tu commites **et tu pousses** sur `origin`, sur la branche en cours. Jamais de `--force`,
+  jamais sur `main` directement si une autre branche est en cours d'usage.
 
 ## Ce que tu ne fais pas
 

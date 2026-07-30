@@ -135,7 +135,8 @@ Ne rien implémenter qui dépende d'une question ouverte, ni d'un document qui n
 `docs/README.md` règle 3 : **une doc modifiée sans que le code suive est un mensonge, et
 l'inverse aussi. Les deux vont dans le même commit.**
 
-Les agents peuvent commiter. **Ils ne poussent jamais.**
+Les agents peuvent commiter **et pousser** sur `origin`. Jamais de `--force`, jamais sur
+une branche autre que celle en cours.
 
 ---
 

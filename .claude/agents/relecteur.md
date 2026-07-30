@@ -89,7 +89,7 @@ relire.
 - [ ] Message conventionnel.
 - [ ] **Doc et code dans le même commit** si le comportement change (règle 3 de
       `docs/README.md`).
-- [ ] Aucune poussée. Les agents ne poussent jamais.
+- [ ] Si poussé, la cible est `origin` et la branche courante — jamais de `--force`.
 
 ## Format du verdict
 
