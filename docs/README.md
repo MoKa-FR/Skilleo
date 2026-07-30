@@ -42,7 +42,7 @@ Règle absolue : **aucun sujet n'apparaît dans deux documents.** Si un sujet se
 - `06-ecrans` répond à *« quel contenu, dans quel ordre ? »*
 - `07-motion` répond à *« comment ça bouge ? »*
 - `08-conventions-code` répond à *« où on écrit le code ? »*
-- `09-contenu` répond à *« dans quelle forme entre ce qui est écrit ? »* — pas *« quoi écrire »*
+- `09-contenu` répond à *« dans quelle forme entre ce qui est écrit, et selon quelles règles ? »* — pas à *« quelle matière enseigner ? »*, qui relève de Mohamed
 - `10-architecture` répond à *« que retient l'application, et où ? »*
 - `references/*` répond à *« qu'a-t-on observé ailleurs ? »* — **descriptif, jamais normatif.** Une valeur y figurant n'est pas applicable tant qu'elle n'est pas entrée dans `tokens/tokens.css`.
 
@@ -57,18 +57,26 @@ sans avoir à parcourir le journal.
 |---|---|---|
 | `00-produit.md` | `D-01` `D-02` `D-03` `D-08` `D-21` `D-22` | — |
 | `01-ux-principes.md` | `D-12` | — |
-| `02-interactions.md` | `D-12` `D-13` `D-14` `D-15` `D-17` | — |
+| `02-interactions.md` | `D-12` `D-13` `D-14` `D-15` `D-17` `D-39` | — |
 | `03-navigation.md` | `D-09` `D-16` `D-21` `D-22` `D-23` `D-35` | — |
-| `04-tokens.md` | `D-04` `D-11` `D-24` `D-25` `D-26` `D-27` `D-28` `D-33` `D-34` | `Q-01` |
-| `05-composants.md` | `D-11` `D-12` `D-14` `D-16` `D-23` `D-24` `D-26` `D-28` `D-29` | — |
-| `06-ecrans.md` | `D-08` `D-09` `D-10` `D-13` `D-14` `D-15` `D-21` `D-22` `D-23` `D-26` `D-28` `D-29` `D-31` `D-35` `D-36` | — |
+| `04-tokens.md` | `D-04` `D-11` `D-24` `D-25` `D-26` `D-27` `D-28` `D-33` `D-34` `D-39` | — |
+| `05-composants.md` | `D-11` `D-12` `D-14` `D-16` `D-23` `D-24` `D-26` `D-28` `D-29` `D-39` | — |
+| `06-ecrans.md` | `D-08` `D-09` `D-10` `D-13` `D-14` `D-15` `D-21` `D-22` `D-23` `D-26` `D-28` `D-29` `D-31` `D-35` `D-36` `D-40` | — |
 | `07-motion.md` | `D-34` | `Q-01` |
 | `08-conventions-code.md` | `D-04` `D-20` `D-27` `D-38` | — |
-| `09-contenu.md` | `D-13` `D-16` `D-20` `D-30` `D-32` `D-36` `D-37` `D-38` | — |
-| `10-architecture.md` | `D-04` `D-08` `D-22` `D-30` `D-31` `D-32` | — |
+| `09-contenu.md` | `D-13` `D-16` `D-20` `D-30` `D-32` `D-36` `D-37` `D-38` `D-41` `D-42` `D-43` `D-44` | — |
+| `10-architecture.md` | `D-04` `D-08` `D-22` `D-30` `D-31` `D-32` `D-40` | — |
 
 Les décisions transversales `D-05` `D-06` `D-07` `D-18` `D-19` portent sur le projet
 et la documentation eux-mêmes, pas sur un document en particulier.
+
+**`Q-01` ne bloque plus que `07-motion.md`.** `D-33`, `D-34` et `D-39` ont tranché en `[PROPOSÉ]`
+assumé plutôt que d'attendre les intrants. Leur arrivée déclenchera une **révision** de ces trois
+décisions, pas une réécriture : les valeurs concernées sont localisées dans `tokens/tokens.css` et
+dans deux tableaux d'états.
+
+**La charte de style de `09-contenu.md` §7bis ne s'applique pas à `docs/`.** `D-42` exempte la
+documentation explicitement. Ne pas réécrire ces onze documents au nom de la charte.
 
 ---
 

@@ -38,7 +38,11 @@
   --marker-positive:   #00A631;  /* [P]  juste — 3,23:1 clair · 6,50:1 sombre */
   --marker-negative:   #E02B20;  /* [P]  faux  — 4,63:1 clair · 4,54:1 sombre */
 
-  /* ----------------------------------------------------------- Typographie */
+  /* ----------------------------------------------------------- Typographie
+     Convention : la doc cite un REGISTRE (`--type-question`), qui n'est pas
+     un token mais une famille de trois — `-size`, `-lh`, `-track`. Un
+     registre ne se déclare donc jamais seul, et son absence de ce fichier
+     n'est pas un token manquant.                                           */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   /* [AV] La police de la référence n'est pas identifiée. Pile de secours
      uniquement. Ne pas nommer de police avant identification. */
@@ -110,8 +114,24 @@
   --radius-lg:   1rem;    /* 16px  [P]                                       */
   --radius-full: 9999px;  /*       [P] pastilles et marqueurs uniquement     */
 
+  /* ---------------------------------------------------------------- Contour
+     D-39. Le contour d'un contrôle se dessine en `box-shadow: inset`, JAMAIS
+     en propriété `border` : une ombre interne ne participe pas au modèle de
+     boîte, donc l'épaississement au survol ne déplace rien — par
+     construction, et non par compensation de padding.
+     Seul emploi de box-shadow autorisé. Ne contredit pas 04-tokens.md §7,
+     qui interdit les ombres PORTÉES, c'est-à-dire l'illusion de relief.     */
+  --border-width:        1px;  /* [P]  repos                                 */
+  --border-width-strong: 2px;  /* [P]  survol, focus, mise en évidence       */
+
   /* ----------------------------------------------------------------- Ombres */
   --shadow-none: none;    /* Skilleo n'a aucune ombre. Voir 04-tokens.md §5. */
+
+  /* ----------------------------------------------------------------- Survol
+     Un bouton primaire est une surface pleine : il n'a pas de ton à
+     promouvoir, le patron tertiaire → primaire ne s'y applique pas.
+     Règle D-39 : le remplissage fait un pas vers le fond de page.           */
+  --fill-primary-hover: #262626;  /* [P] libellé blanc dessus — 15,1:1       */
 
   /* ------------------------------------------------------------------ Focus */
   --focus-ring-width:  2px;                  /* [P]                         */
@@ -143,6 +163,10 @@
   --text-secondary:    #686A70;  /* [M]  PAS l'inverse de #9B9B9B           */
   --text-tertiary:     #45464B;  /* [P]  extrapolé du rapport clair         */
   --border-subtle:     #1F1F1F;  /* [P]                                     */
+
+  /* Survol du bouton primaire : même règle qu'en clair (D-39), un pas vers
+     le fond de page — qui est ici le noir. Le libellé est noir dessus.     */
+  --fill-primary-hover: #D9D9D9; /* [P] libellé noir dessus — 14,9:1        */
 
   /* Marqueurs : volontairement NON redéfinis ici (D-33). Les valeurs du
      thème clair franchissent le seuil 3:1 sur fond noir. Les redéclarer

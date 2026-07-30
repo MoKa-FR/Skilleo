@@ -165,11 +165,13 @@ Conformément à `D-13`, la ligne `Indice` de la colonne passive :
 
 - est en `textTertiary` au repos ;
 - passe en `textPrimary` **au survol et au focus clavier** ;
-- se déclenche au clic **ou** par raccourci clavier, ce dernier affiché discrètement.
+- se déclenche au clic **ou** par la touche `I`, affichée à côté de la ligne.
 
-Le survol seul **ne révèle pas** l'indice — il signale sa disponibilité. La demande d'aide reste un acte délibéré, parce que c'est le signal qu'on veut mesurer.
+Le survol seul **ne révèle pas** l'indice — il signale sa disponibilité. La demande d'aide reste un acte délibéré.
 
-`[À VALIDER]` Le raccourci n'est pas retenu. Contraintes : ne pas entrer en conflit avec `Entrée` ni les flèches, être mémorisable, ne pas mobiliser un raccourci navigateur.
+**Pourquoi `I` (`D-39`).** Une lettre nue est sans risque parce que `D-22` exclut tout champ de saisie libre : aucune frappe ne peut être destinée à autre chose. `I` n'entre en conflit ni avec les flèches, ni avec `Entrée`, ni avec `Échap`, ni avec `Tab`, n'est un raccourci navigateur sous aucun modificateur, occupe la même position physique en AZERTY et en QWERTY, et porte l'initiale du mot affiché.
+
+**Le raccourci est toujours montré.** Un raccourci non affiché n'existe pas : personne ne le devine.
 
 ### 5.5 Après la réponse
 
@@ -193,10 +195,10 @@ Skilleo est desktop-first. Il recevra malgré tout des portables tactiles et des
 
 | Réf | Sujet |
 |---|---|
-| `D-13` | Le raccourci de l'indice |
-| `D-17` | Validation en test de la garde `keyup` |
-| `Q-01` | Valeurs de l'anneau de focus — dépendent des tokens de couleur |
-| `D-34` | Quelles transitions existent entre états — la paire durée/easing est arrêtée, son emploi ne l'est pas |
+| `D-17` | Validation en test de la garde `keyup` — le seul point réellement ouvert de ce document |
+| `D-34` | Quelles transitions existent entre états — la paire durée/easing est arrêtée, son emploi ne l'est pas. Relève de `07-motion.md` |
+| `D-13` | **Tranché par `D-39`** — le raccourci de l'indice est `I` |
+| `Q-01` | **Ne bloque plus ce document.** `D-39` arrête les valeurs de survol, de contour et d'anneau de focus en `[PROPOSÉ]`. Son arrivée déclenchera une révision, pas un blocage |
 | `D-23` | **Tranché** — les surfaces secondaires sont des panneaux dans la colonne passive |
 
 ---
@@ -206,3 +208,4 @@ Skilleo est desktop-first. Il recevra malgré tout des portables tactiles et des
 | Date | Modification |
 |---|---|
 | 2026-07-30 | Création. Cadré par D-12 à D-17. Intégralité du document en `[PROPOSÉ]` : la référence étant tactile, aucun état de pointeur n'y est observable. |
+| 2026-07-30 | `D-39` : le raccourci de l'indice est `I` (§5.4), et `Q-01` cesse de bloquer ce document. Le §7 est réduit à un seul point réellement ouvert. |

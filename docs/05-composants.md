@@ -96,16 +96,18 @@ Les flèches déplacent une **mise en évidence**. Seule `Entrée` engage. Séle
 
 ### 4.2 `Option`
 
-| État | Rendu |
-|---|---|
-| Repos | Contour `--border-subtle`, texte `--text-primary` |
-| Survol | Contour `--text-primary` |
-| Focus visible | Contour `--text-primary` + anneau de focus |
-| Mise en évidence | Contour `--text-primary`, épaissi — **ne vaut pas réponse** |
-| Retenue après validation | Contour `--text-primary` + `Marqueur` |
-| Écartée après validation | Contour `--border-subtle`, texte `--text-tertiary` |
+| État | Rendu | Épaisseur |
+|---|---|---|
+| Repos | Contour `--border-subtle`, texte `--text-primary` | `--border-width` |
+| Survol | Contour `--text-primary` | `--border-width` |
+| Focus visible | Contour `--text-primary` + anneau de focus | `--border-width` |
+| Mise en évidence | Contour `--text-primary` — **ne vaut pas réponse** | `--border-width-strong` |
+| Retenue après validation | Contour `--text-primary` + `Marqueur` | `--border-width-strong` |
+| Écartée après validation | Contour `--border-subtle`, texte `--text-tertiary` | `--border-width` |
 
 Hauteur `--h-control`, rayon `--radius`.
+
+**Le contour est un `box-shadow: inset`, jamais une `border` (`D-39`).** L'épaississement de la mise en évidence déplacerait le libellé d'un pixel s'il était rendu par une propriété `border`. Une ombre interne ne participe pas au modèle de boîte : R5 est alors respecté **par construction**, et non par une compensation de `padding` qu'il faudrait maintenir en miroir. C'est le seul emploi de `box-shadow` autorisé dans le système.
 
 **Contrat.**
 
@@ -120,13 +122,15 @@ Hauteur `--h-control`, rayon `--radius`.
 
 ## 5. `Bouton`
 
-| Variante | Emploi | Rendu |
-|---|---|---|
-| **Primaire** | L'action P0 de l'écran | Fond `--text-primary`, texte inversé |
-| **Secondaire** | Action P1 | Contour, fond transparent |
-| **Discret** | Action P2 | Texte seul, patron de survol du §2 |
+| Variante | Emploi | Repos | Survol et focus |
+|---|---|---|---|
+| **Primaire** | L'action P0 de l'écran | Fond `--text-primary`, texte inversé | Fond `--fill-primary-hover` |
+| **Secondaire** | Action P1 | Contour `--border-width`, fond transparent | Contour `--border-width-strong` |
+| **Discret** | Action P2 | Texte seul, `--text-tertiary` | `--text-primary`, patron du §2 |
 
 Hauteur `--h-control`, rayon `--radius`, aucune ombre (`04-tokens.md` §7).
+
+**Le bouton primaire est le seul composant qui n'applique pas le patron de survol du §2**, et `D-39` dit pourquoi : le patron promeut un **ton de texte**, or une surface pleine n'a pas de ton à promouvoir. Sa règle propre est que **le remplissage fait un pas vers le fond de page**. Le contraste du libellé reste au-dessus de 14:1 dans les deux thèmes : la lisibilité n'est jamais la variable d'ajustement.
 
 **Contrat.**
 

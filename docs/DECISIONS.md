@@ -51,6 +51,12 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 | [D-36](#d-36--un-seul-retour-par-question) | Un seul retour par question | `09-contenu.md`, `06-ecrans.md` |
 | [D-37](#d-37--la-notion-est-partagée-référencée-par-identifiant) | La notion est partagée, référencée par identifiant | `09-contenu.md` |
 | [D-38](#d-38--questions-en-yaml-notions-en-mdx) | Questions en YAML, notions en MDX | `09-contenu.md`, `08-conventions-code.md` |
+| [D-39](#d-39--survol-et-focus-sont-tranchés-en-proposé-sans-attendre-la-référence) | Survol et focus tranchés en `[PROPOSÉ]`, sans attendre la référence | `tokens/tokens.css`, `02-interactions.md`, `05-composants.md` |
+| [D-40](#d-40--la-v0-sévalue-en-sessions-observées-sans-aucun-instrument-de-mesure) | La V0 s'évalue en sessions observées, sans aucun instrument de mesure | `10-architecture.md`, `06-ecrans.md` |
+| [D-41](#d-41--le-module-source-est-un-niveau-0-jamais-publié) | Le module source est un niveau 0, jamais publié | `09-contenu.md` |
+| [D-42](#d-42--charte-de-rédaction-du-contenu-opposable-limitée-au-contenu) | Charte de rédaction du contenu, opposable, limitée au contenu | `09-contenu.md` |
+| [D-43](#d-43--fidélité-factuelle-du-contenu--aucun-chiffre-sans-source) | Fidélité factuelle du contenu : aucun chiffre sans source | `09-contenu.md` |
+| [D-44](#d-44--on-contextualise-avant-de-vulgariser-et-jamais-par-la-syntaxe) | On contextualise avant de vulgariser, et jamais par la syntaxe | `09-contenu.md` |
 
 ⚠️ = comporte un point en attente d'arbitrage ou de validation en test.
 
@@ -58,9 +64,16 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 
 | Réf | Question | Bloque |
 |---|---|---|
-| [Q-09](#q-09--comment-apprend-on-quelque-chose-de-la-v0-) | Comment apprend-on quelque chose de la V0 ? | — |
-| [Q-01](#q-01--intrants-de-mesure-trade-republic) | Intrants de mesure Trade Republic | `04-tokens.md`, `05-composants.md`, `07-motion.md` |
-| [Q-03](#q-03--grammaire-desktop--ce-qui-reste-à-inventer) | Grammaire desktop : ce qui reste à inventer | — |
+| [Q-01](#q-01--intrants-de-mesure-trade-republic) | Intrants de mesure Trade Republic | `07-motion.md` — et déclenche la révision de `D-34` et `D-39` |
+
+**Questions résolues** — conservées pour l'historique de raisonnement (règle 5 du `README`).
+
+| Réf | Question | Résolue par |
+|---|---|---|
+| `Q-03` | Grammaire desktop : ce qui reste à inventer | `D-09`, `D-14`, `D-17`, `D-23`, `D-29`, `D-39` |
+| `Q-09` | Comment apprend-on quelque chose de la V0 ? | `D-40` |
+| `Q-10` | Comportement sous 1024 px | `D-28` |
+| `Q-11` | Où vit la bascule de thème | `D-35` |
 
 ---
 ## Décisions arrêtées
@@ -732,32 +745,135 @@ Le contenu éditorial reste en fichiers versionnés (`D-20`), réparti en deux f
 
 ---
 
+### D-39 — Survol et focus sont tranchés en `[PROPOSÉ]`, sans attendre la référence
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Choix de Mohamed** · **Résout :** `Q-03` · **Résout :** le point `[À VALIDER]` de `D-13` · **Impacte :** `tokens/tokens.css`, `02-interactions.md`, `05-composants.md`
+
+`Q-03` attendait des enregistrements d'écran pour spécifier le survol et le focus. **La méthode de `D-34` est appliquée telle quelle :** on tranche maintenant en choix Skilleo assumé, on écrit `[PROPOSÉ]`, et on révisera le jour où `Q-01` point 3 livrera ses intrants.
+
+**Raison, identique à `D-34`.** L'alternative à « trancher » n'était pas « attendre » : c'était « chaque composant invente son survol au moment de l'écrire ». Une valeur inventée dans un composant est plus difficile à corriger qu'une valeur inventée dans `tokens.css`, parce qu'elle est invisible depuis la doc. Le coût de révision d'un token est d'une ligne.
+
+**Ce qui manquait réellement.** `02-interactions.md` §2 et `05-composants.md` §2 décrivaient déjà le patron de survol qualitativement — promotion de ton, couleur et graisse seules. Trois trous concrets subsistaient, et ce sont eux que cette décision comble.
+
+**1. L'épaisseur de contour n'avait aucune valeur.** `05-composants.md` §4.2 écrivait « contour épaissi » sans dire de combien. Deux tokens : `--border-width` et `--border-width-strong`.
+
+**2. Un contour qui s'épaissit pousse le contenu — ce qui viole R5.** Passer une `border` de 1 à 2 px déplace le texte de l'option d'un pixel. Le remède n'est pas de compenser par un `padding`, qui oblige à maintenir deux valeurs en miroir : **le contour d'un contrôle est un `box-shadow` en `inset`, jamais une propriété `border`.** Une ombre portée ne participe pas au modèle de boîte, donc son épaisseur ne déplace rien, par construction et non par compensation. C'est le seul emploi de `box-shadow` autorisé dans le système — il ne contredit pas `04-tokens.md` §7, qui interdit les ombres *portées*, c'est-à-dire l'illusion de relief.
+
+**3. Le bouton primaire n'avait pas de survol possible.** Le patron « ton tertiaire → ton primaire » suppose un texte dont le ton peut monter. Un bouton primaire est une surface pleine : il n'a pas de ton à promouvoir. Règle : **le remplissage fait un pas vers le fond de page.** `--fill-primary-hover` vaut `#262626` en thème clair et `#D9D9D9` en thème sombre. Le contraste du libellé reste au-dessus de 14:1 dans les deux cas — la lisibilité n'est jamais l'ajustement de variable.
+
+**4. Le raccourci de l'indice est `I`.** `D-13` le laissait `[À VALIDER]`. Une lettre nue est sans risque parce que `D-22` exclut tout champ de saisie libre de la V0 : aucune frappe ne peut être destinée à autre chose. `I` n'entre en conflit ni avec les flèches, ni avec `Entrée`, ni avec `Échap`, ni avec `Tab`, n'est un raccourci navigateur sous aucun modificateur, occupe la même position physique en AZERTY et en QWERTY, et porte l'initiale du mot affiché. Le raccourci reste **affiché** à côté de la ligne `Indice` : un raccourci non montré n'existe pas.
+
+**Ce que ça ne change pas.** Le focus reste toujours plus fort que le survol (`02-interactions.md` §2.2), l'anneau reste en `--focus-ring-color` sans couleur d'accent, et rien ne devient atteignable au survol seul (Loi 5).
+
+**Ce que ça exclut :** une `border` sur un contrôle ; une compensation de `padding` pour absorber un épaississement ; une troisième épaisseur ; un survol qui modifie une dimension, une position ou un rayon ; un survol de bouton primaire par changement de teinte plutôt que de clarté ; un raccourci d'indice non affiché.
+
+**Ce qui reste ouvert malgré cette décision :** ces valeurs ne prétendent rien de Trade Republic. `Q-01` point 3 reste ouverte, et son arrivée déclenche une révision — pas une réécriture, les quatre points ci-dessus sont localisés dans `tokens.css` et dans deux tableaux d'états.
+
+---
+
+### D-40 — La V0 s'évalue en sessions observées, sans aucun instrument de mesure
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Résout :** `Q-09` · **Impacte :** `10-architecture.md`, `06-ecrans.md`
+
+`Q-09` constatait que `D-22`, en excluant compte, capture d'email, formulaire de retour et statistiques, privait la V0 de tout moyen de savoir si elle fonctionne. **La voie retenue est l'observation directe : Mohamed s'assoit à côté de trois ou quatre personnes et les regarde faire.** Aucun événement n'est émis, aucune donnée ne quitte le navigateur.
+
+**Raison.** À ce volume, l'observation est strictement plus informative que l'instrumentation. Un taux de décrochage dit *où* ; une personne qui hésite à voix haute dit *pourquoi*. Et la V0 cherche à valider le tempo de la boucle (`D-22`), qui est précisément ce qu'un compteur ne mesure pas.
+
+**Trois conséquences, qui sont le vrai contenu de la décision.**
+
+**1. La V0 n'est pas diffusée.** Elle est montrée. Une adresse publique qu'on ne communique pas reste acceptable ; une annonce ne l'est pas. C'est une contrainte sur Mohamed, pas sur le code.
+
+**2. Le régime étroit de `D-28` cesse d'être urgent.** Les sessions ont lieu devant un ordinateur. `D-28` reste spécifiée et n'est pas révoquée — la spécification est écrite, elle coûte désormais zéro à conserver — mais son implémentation peut suivre celle des largeurs nominales au lieu de l'accompagner.
+
+**3. Le journal de `D-31` ne sert à rien pour cette évaluation, et c'est voulu.** Il reste conçu pour la migration vers les comptes, pas pour la mesure. Aucun point d'entrée serveur, aucun envoi, aucune agrégation n'entre en V0.
+
+**Ce que l'observation ne dira pas.** Rien sur le comportement d'inconnus, rien sur la rétention, rien à un volume statistique. C'est accepté : ces questions n'appartiennent pas à une V0 dont le seul enjeu est de savoir si la boucle tient debout.
+
+**Ce que ça exclut :** toute analytique, y compris anonyme et auto-hébergée ; un compteur envoyé au serveur ; un ping de démarrage de session ; une capture d'email « juste pour savoir qui essaie » ; un formulaire de retour en fin de parcours. Aucun de ces éléments n'a de « petite version » en V0.
+
+**Réexamen.** Cette décision vaut pour la V0 seule. Les comptes arrivent juste après (`D-30`) et rouvrent entièrement le sujet, avec une base sur laquelle mesurer.
+
+---
+
+### D-41 — Le module source est un niveau 0, jamais publié
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Étend :** `D-16` · **Impacte :** `09-contenu.md`
+
+Une session de rédaction menée hors de ce dépôt a produit un module de formation long, expert et sourcé (« Les Skills de Claude », douze parties). Cet objet n'entrait dans aucun des deux niveaux de `D-16`. Il en devient le **niveau 0** :
+
+| Niveau | Objet | Publié ? |
+|---|---|---|
+| **0 — module source** | Le corpus expert complet sur un sujet, sourcé, long | **Jamais** |
+| **1 — résumé** | Atomique, tient sans défiler dans la colonne passive | Oui, V0 |
+| **2 — page complète** | Développement, exemples | Hors V0 (`D-22`) |
+
+**Le module ne s'affiche nulle part.** Questions, options, indices, retours et résumés en sont **extraits**. C'est la matière première, pas un écran.
+
+**Raison.** Sans lui, la règle de fidélité factuelle de `D-42` n'a nulle part où s'appliquer : on ne source pas une phrase de dix mots. Le module est l'endroit où l'expertise est établie et vérifiée une fois, pour que les unités publiées puissent être courtes sans être creuses. Il explique en outre pourquoi une question est posée, ce que l'écran n'a pas la place de dire.
+
+**Traçabilité obligatoire.** Toute question et toute notion désigne le module dont elle est extraite. Une unité de contenu sans source déclarée est un défaut de rédaction, au même titre qu'une valeur non marquée dans la documentation.
+
+**Emplacement : dans le dépôt**, aux côtés des questions et des notions, malgré son statut non publié. Une source qui vit hors du dépôt peut changer sans que rien ne le signale, et la traçabilité devient une déclaration invérifiable. Le format est le `.mdx` des notions (`D-38`) : c'est de la prose.
+
+**La V0 n'en tire qu'une fraction.** Un module couvre bien plus que ce qu'un parcours de V0 emploie. C'est normal et voulu : le surplus sert les parcours suivants sans être réécrit.
+
+**Ce que ça exclut :** un module rendu à l'écran, même partiellement ; un module hors du dépôt ; une question sans source déclarée ; l'emploi d'un module comme page complète de notion — le niveau 2 se rédige, il ne se découpe pas depuis le niveau 0.
+
+---
+
+### D-42 — Charte de rédaction du contenu, opposable, limitée au contenu
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Impacte :** `09-contenu.md`
+
+Tout contenu de formation Skilleo respecte une charte de style **opposable** : un contenu qui la viole se corrige, il ne se discute pas.
+
+**Périmètre exact.** La charte régit les énoncés, les libellés d'options, les indices, les retours, les résumés de notions et les modules sources. **Elle ne régit pas `docs/`.** La documentation interne est dense, structurante, et vit de tableaux et d'emphase ; lui appliquer une charte conçue pour de la prose pédagogique imposerait la réécriture des onze documents sans bénéfice pour un seul lecteur. Cette exemption est écrite ici pour qu'aucun agent ne l'entreprenne au nom de la charte.
+
+**Les règles elles-mêmes sont dans `09-contenu.md`**, pas ici, conformément à `D-27` : une règle n'existe qu'à un endroit. Cette décision fixe leur statut, pas leur contenu.
+
+**Origine.** La charte est née d'un audit du skill `humanizer` sur un premier jet, dont elle a listé les tics. Ce sont donc des défauts observés sur notre propre production, pas des préférences théoriques.
+
+**Ce que ça ne coûte pas.** L'interdiction quasi totale du gras est indolore pour Skilleo : `D-11` fait du paragraphe à deux tons un composant de premier rang, ce qui donne déjà un mécanisme d'emphase, meilleur parce qu'il tient sur deux niveaux de lecture au lieu d'un. La charte retire un outil que le système avait déjà remplacé.
+
+**Ce que ça exclut :** une dérogation ponctuelle « parce que ça se lit mieux ici » ; une charte appliquée à `docs/` ; une charte gardée en tête plutôt qu'écrite.
+
+---
+
+### D-43 — Fidélité factuelle du contenu : aucun chiffre sans source
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Applique :** la règle numéro un au contenu · **Impacte :** `09-contenu.md`
+
+Aucun chiffre, aucun nom, aucune date n'entre dans un contenu Skilleo sans provenir d'une source vérifiable. **Quand un chiffre rendrait la phrase plus convaincante mais n'existe pas, on écrit la phrase sans chiffre.**
+
+**Ce n'est pas une précaution théorique.** L'audit du premier jet a trouvé deux fabrications pures (« là où 80 % des skills échouent », « le skill tournera sur 10 000 cas ») et une infidélité à la source (dix requêtes de test annoncées là où la documentation en dit huit à dix). Les trois étaient plausibles, et c'est exactement ce qui les rendait dangereuses.
+
+**Pourquoi la règle est plus stricte pour le contenu que pour le reste du projet.** Une erreur dans `docs/` gêne trois personnes qui la corrigent. Une erreur dans un contenu de formation est enseignée, retenue, puis répétée par ceux qui l'ont apprise. Le contenu est le seul endroit du projet où une erreur se propage toute seule.
+
+**La règle numéro un s'applique donc mot pour mot au contenu :** face à un manque, on s'arrête et on demande, on ne comble pas par une invention plausible.
+
+**Ce que ça exclut :** un chiffre d'illustration ; un ordre de grandeur non sourcé ; une citation reconstituée de mémoire ; une statistique sans référence ; un exemple présenté comme réel s'il est inventé — un exemple inventé se présente comme tel.
+
+---
+
+### D-44 — On contextualise avant de vulgariser, et jamais par la syntaxe
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Impacte :** `09-contenu.md`
+
+Tout contenu Skilleo suit une progression imposée : **contextualiser, puis vulgariser, puis détailler, puis aller vers l'ingénierie.** Jamais l'inverse, et jamais un saut.
+
+**La règle négative est la partie utile :** on n'entre jamais par la syntaxe. Un apprenant qui voit la forme d'un fichier avant d'avoir compris à quoi il répond a mémorisé une recette. Il saura la reproduire et pas la transposer, ce qui est exactement l'échec que Skilleo existe pour éviter (`00-produit.md`).
+
+**Chaque sujet se rattache explicitement à un fil conducteur.** Sur le corpus IA, ce fil est la **mise en contexte** : un modèle ne travaille qu'à partir de ce qui se trouve dans sa fenêtre au moment où il répond, et tous les mécanismes de l'écosystème sont des réponses différentes à cette même question. Un module qui ne se rattache à rien produit des connaissances isolées, donc inutilisables.
+
+**Outil de diagnostic réutilisable, dérivé du fil.** Devant un mécanisme ou devant un besoin, quatre questions : **quoi** (quelle information est injectée), **quand** (toujours, ou sous condition), **où** (quelle portée), **pour qui** (l'assistant principal, ou un exécutant secondaire). L'intérêt est qu'elle transforme une question de conception en réflexe, sans rien à mémoriser.
+
+**Ce que ça exclut :** un contenu qui ouvre sur un extrait de code ou de configuration ; un module sans rattachement explicite à son fil conducteur ; une progression qui détaille avant d'avoir vulgarisé ; l'enseignement d'un mécanisme comme une liste d'options plutôt que comme une réponse à un besoin.
+
+---
+
 ## Questions ouvertes
 
 Ordre de priorité décroissante. Rien de bloqué par ces questions ne doit être implémenté.
 
-### Q-09 — Comment apprend-on quelque chose de la V0 ?
-**Découle de :** `D-22` · **Ne bloque aucun document**, mais bloque l'utilité de la V0
-
-`D-22` exclut le compte, la capture d'email, le formulaire de retour et les statistiques d'usage. **La V0 n'a donc plus aucun instrument de mesure.** Mise en ligne telle quelle, elle sera utilisée sans qu'on sache par combien de personnes, ni où elles décrochent, ni si elles ont trouvé l'indice.
-
-Ce n'est pas un défaut si le plan est de **s'asseoir à côté de trois ou quatre personnes** et de les regarder faire — c'est même la meilleure méthode à ce stade, et elle ne demande aucun développement. Mais ça devient un problème si la V0 est mise en ligne pour être découverte seule.
-
-Trois voies, aucune retenue :
-
-| Voie | Coût | Ce qu'on apprend |
-|---|---|---|
-| Sessions observées, sans instrumentation | Nul en développement, du temps de Mohamed | Le plus riche : les hésitations, les phrases dites à voix haute |
-| Événements anonymes minimaux | ~2 h | Où on décroche, taux d'usage de l'indice, taux d'achèvement |
-| Rien | Nul | Rien |
-
-**À trancher avant la mise en ligne, pas avant le développement.** La question n'est donc pas bloquante pour commencer.
-
----
-
 ### Q-01 — Intrants de mesure Trade Republic
-**Bloque :** `04-tokens.md`, `05-composants.md`, `07-motion.md`
-**Avancement 2026-07-30 :** premier lot reçu — 6 captures du **site marketing** + 1 page de connexion. Dépouillé dans [`references/trade-republic-web.md`](./references/trade-republic-web.md). Couleurs et géométrie desktop mesurées. **Reste bloquant.**
+**Bloque :** `07-motion.md` seul. `04-tokens.md` et `05-composants.md` sont **débloqués** par `D-33`, `D-34` et `D-39`, qui tranchent en `[PROPOSÉ]` assumé plutôt que d'attendre.
+**Avancement 2026-07-30 :** premier lot reçu — 6 captures du **site marketing** + 1 page de connexion. Dépouillé dans [`references/trade-republic-web.md`](./references/trade-republic-web.md). Couleurs et géométrie desktop mesurées.
+
+**Ce que son arrivée déclenchera :** une **révision** de `D-34` et `D-39`, pas une réécriture. Les valeurs concernées sont localisées dans `tokens/tokens.css` et dans deux tableaux d'états.
 
 Ce qui manque encore, par ordre d'utilité :
 
@@ -769,19 +885,15 @@ Ce qui manque encore, par ordre d'utilité :
 
 ---
 
-### Q-03 — Grammaire desktop : ce qui reste à inventer
-**Partiellement résolue par `D-09`** (mise en page). **Reste bloquant** pour `05-composants.md` et `07-motion.md`.
+### ~~Q-03~~ — Grammaire desktop : **résolue le 2026-07-30**
 
-Skilleo est desktop-first ; Trade Republic est une application mobile. La mise en page est tranchée par `D-09`. Ce qui suit ne l'est pas, et **n'a aucune référence copiable** — ni dans l'app mobile, ni dans les captures du site.
-
-1. **Les états de survol.** Trade Republic n'en a aucun : c'est une app tactile. Sur desktop, c'est une part majeure de la sensation d'interface. À définir de zéro, dans l'esprit de la référence. Nécessite `Q-01` point 3.
-2. ~~La grammaire clavier~~ — **résolu par `D-14`, `D-17`, `D-29`** et spécifié dans `02-interactions.md` §5.
-3. **Le curseur et le focus.** Anneaux de focus, affordances de curseur : absents de la référence.
-4. ~~Les surfaces secondaires~~ — **résolu par `D-23`** : panneaux dans la colonne passive.
+Résolue en quatre temps : `D-09` (mise en page), `D-14`/`D-17`/`D-29` (grammaire clavier), `D-23` (surfaces secondaires), `D-39` (survol, focus, contour, raccourci de l'indice).
 
 **Ce qui se transpose sans difficulté** — établi par les mesures, voir `references/trade-republic-web.md` : noir et blanc purs, typographie lourde à interligne serré, information principale très grande, plein cadre à gouttière fine, aucune carte décorative, couleur strictement fonctionnelle, quasi-absence d'ombres, icône à droite du libellé.
 
 **Ce qui ne se transpose pas :** dock d'actions flottant en bas (la souris n'a pas de zone de pouce), gestes de balayage, colonne unique pleine largeur.
+
+**Attention en lisant `D-39` :** ses valeurs sont `[PROPOSÉ]`, pas mesurées. `Q-01` point 3 reste ouverte et déclenchera une révision.
 
 ---
 
