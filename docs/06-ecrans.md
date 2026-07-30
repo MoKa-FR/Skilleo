@@ -1,7 +1,7 @@
 # 06 — Écrans
 
 > Périmètre : quel contenu, dans quel ordre, dans quel état.
-> Aucune valeur (voir [`tokens/tokens.css`](./tokens/tokens.css)), aucun composant redéfini (voir `05-composants.md`), aucune règle de navigation (voir `03-navigation.md`).
+> Aucune valeur (voir [`src/app/globals.css`](../src/app/globals.css)), aucun composant redéfini (voir `05-composants.md`), aucune règle de navigation (voir `03-navigation.md`).
 
 ---
 

@@ -27,7 +27,7 @@
 
 | Vous cherchez | Fichier |
 |---|---|
-| Une **valeur applicable** | [`tokens/tokens.css`](./tokens/tokens.css) — canonique, consommé par le code |
+| Une **valeur applicable** | [`src/app/globals.css`](../src/app/globals.css) — canonique, consommé par le code |
 | Une **mesure** faite sur la référence | [`references/trade-republic-web.md`](./references/trade-republic-web.md) |
 | **Pourquoi** cette valeur, et comment l'employer | Ce document |
 

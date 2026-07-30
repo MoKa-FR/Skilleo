@@ -6,7 +6,7 @@
 > entre, et **selon quelles règles** elle s'écrit. Le choix des sujets relève de
 > Mohamed (`D-22`).
 > Aucun gabarit d'écran ici (voir `06-ecrans.md`), aucune valeur de token
-> (voir [`tokens/tokens.css`](./tokens/tokens.css)).
+> (voir [`src/app/globals.css`](../src/app/globals.css)).
 
 **Ce document n'est pas soumis à la charte qu'il énonce.** `D-42` limite la charte de style au
 contenu de formation et **exempte `docs/` explicitement**. Aucun agent ne doit réécrire la

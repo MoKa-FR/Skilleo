@@ -1,7 +1,7 @@
 # 05 — Composants
 
 > Périmètre : les briques, leurs états, et le contrat de comportement de chacune.
-> Aucune valeur chiffrée (voir [`tokens/tokens.css`](./tokens/tokens.css)), aucun contenu d'écran (voir `06-ecrans.md`), aucune durée (voir `07-motion.md`).
+> Aucune valeur chiffrée (voir [`src/app/globals.css`](../src/app/globals.css)), aucun contenu d'écran (voir `06-ecrans.md`), aucune durée (voir `07-motion.md`).
 
 ---
 

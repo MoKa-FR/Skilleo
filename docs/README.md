@@ -15,7 +15,7 @@ Ces documents sont **normatifs** : en cas de désaccord entre le code et la doc,
 | [`01-ux-principes.md`](./01-ux-principes.md) | Lois UX transversales, divulgation progressive, hiérarchie des actions | 🟢 rédigé |
 | [`02-interactions.md`](./02-interactions.md) | Grammaire de pointeur et de clavier : survol, focus, curseur, raccourcis | 🟢 rédigé |
 | [`03-navigation.md`](./03-navigation.md) | Architecture de l'information, destinations, panneaux contextuels | 🟢 rédigé |
-| [`tokens/tokens.css`](./tokens/tokens.css) | **Valeurs canoniques des tokens** — consommé par le code (`D-27`) | 🟢 vivant |
+| [`src/app/globals.css`](../src/app/globals.css) | **Valeurs canoniques des tokens** — consommé par le code (`D-27`) | 🟢 vivant |
 | [`04-tokens.md`](./04-tokens.md) | Pourquoi ces valeurs, et sous quelles règles les employer | 🟢 rédigé |
 | [`05-composants.md`](./05-composants.md) | Catalogue des composants, états, contrats comportementaux | 🟢 rédigé |
 | [`06-ecrans.md`](./06-ecrans.md) | Gabarits d'écran, ordre du contenu, états transverses | 🟢 rédigé |

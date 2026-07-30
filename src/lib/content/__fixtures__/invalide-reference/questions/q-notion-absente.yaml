@@ -1,0 +1,18 @@
+id: q-notion-absente
+notion: n-inexistante
+source: s-inexistante#ancre
+
+enonce: Question dont la notion et la source n'existent pas ?
+
+options:
+  - id: a
+    texte: Première option
+    juste: true
+  - id: b
+    texte: Seconde option
+
+indice: Un indice quelconque.
+
+retour:
+  amorce: Une amorce quelconque.
+  suite: Une suite quelconque.

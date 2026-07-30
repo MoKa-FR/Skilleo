@@ -1,0 +1,19 @@
+id: q-deux-justes
+notion: n-inexistante
+source: s-inexistante#ancre
+
+enonce: Question invalide avec deux options justes ?
+
+options:
+  - id: a
+    texte: Première option
+    juste: true
+  - id: b
+    texte: Seconde option
+    juste: true
+
+indice: Un indice quelconque.
+
+retour:
+  amorce: Une amorce quelconque.
+  suite: Une suite quelconque.
