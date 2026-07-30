@@ -1,0 +1,18 @@
+id: q-exemple-2
+notion: n-exemple
+source: s-exemple#second
+
+enonce: Seconde question de démonstration, deux options plausibles ?
+
+options:
+  - id: a
+    texte: Mauvaise option
+  - id: b
+    texte: Bonne option
+    juste: true
+
+indice: Un second indice de démonstration.
+
+retour:
+  amorce: La bonne réponse était la seconde option.
+  suite: Autre explication brève de démonstration.

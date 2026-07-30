@@ -1,0 +1,18 @@
+id: q-exemple
+notion: n-exemple
+source: s-exemple#premier
+
+enonce: Ceci est une question de démonstration, deux options plausibles ?
+
+options:
+  - id: a
+    texte: Première option
+    juste: true
+  - id: b
+    texte: Seconde option
+
+indice: Un indice de démonstration, une seule phrase.
+
+retour:
+  amorce: La bonne réponse était la première option.
+  suite: Explication brève de démonstration, deux phrases maximum.
