@@ -262,7 +262,7 @@ Le **seul** endroit du système où la couleur apparaît (`D-26`).
 2. **Jamais décoratif.** Ne qualifie qu'une réponse. Aucune extension à un état de succès générique, aucun emploi ailleurs dans le produit.
 3. **Jamais sur une surface.** Pas de fond coloré, pas de bordure colorée, pas de bandeau.
 
-`[AV]` Les valeurs de couleur ne sont pas arrêtées, et leur équivalent en thème sombre n'est pas calibré. Le marqueur étant petit, elles devront être plus saturées qu'une couleur de texte pour rester lisibles. **Ne pas implémenter avant arbitrage.**
+`[P]` Les deux valeurs sont arrêtées par `D-33`, **identiques dans les deux thèmes**. Le contrat ci-dessus est ce qui le permet : l'interdit n°1 maintient le marqueur hors du texte, donc sous le seuil de contraste des éléments non textuels. **Si le marqueur devenait un jour du texte, `D-33` tombe et les valeurs sont à recalibrer.**
 
 ---
 
@@ -301,11 +301,10 @@ Le **seul** endroit du système où la couleur apparaît (`D-26`).
 
 | Réf | Sujet |
 |---|---|
-| `D-26` | Valeurs du `Marqueur`, et calibrage en thème sombre — `[AV]` |
 | `D-13` | Le raccourci clavier du `Declencheur` `Indice` |
 | `D-17` | Validation en test réel de la garde `keyup` du `Bouton` primaire |
-| `Q-01` | Durées de transition entre états — dépend de `07-motion.md` |
-| `Q-10` | Comportement des composants sous 1024 px, notamment la largeur des cibles |
+| `D-34` | Quelles transitions existent — la paire durée/easing est arrêtée, leur emploi ne l'est pas |
+| `D-28` | Largeur des cibles en régime étroit — la hauteur est couverte par `D-25` |
 
 ---
 
@@ -314,3 +313,4 @@ Le **seul** endroit du système où la couleur apparaît (`D-26`).
 | Date | Modification |
 |---|---|
 | 2026-07-30 | Création. Débloqué par `D-25` (hauteur de contrôle). Neuf composants, quatre emplacements réservés. Cadré par D-08 à D-27. |
+| 2026-07-30 | `Marqueur` sort de `[AV]` (`D-33`) : valeurs arrêtées, identiques dans les deux thèmes, le contrat « jamais du texte » étant ce qui le permet. |

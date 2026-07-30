@@ -33,9 +33,10 @@
 
   /* Marqueur sémantique — couleur limitée à une icône ou un point (D-26).
      Jamais sur du texte, jamais sur une surface, jamais seule porteuse
-     d'information.                                                         */
-  --marker-positive:   #00A631;  /* [AV] réponse juste                      */
-  --marker-negative:   #E02B20;  /* [AV] réponse fausse                     */
+     d'information. Valeurs arrêtées par D-33 : les MÊMES dans les deux
+     thèmes, le seuil applicable étant 3:1 (élément non textuel).           */
+  --marker-positive:   #00A631;  /* [P]  juste — 3,23:1 clair · 6,50:1 sombre */
+  --marker-negative:   #E02B20;  /* [P]  faux  — 4,63:1 clair · 4,54:1 sombre */
 
   /* ----------------------------------------------------------- Typographie */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -118,8 +119,15 @@
   --focus-ring-color:  var(--text-primary);  /* [P] pas de couleur d'accent */
 
   /* --------------------------------------------------------------- Mouvement
-     Aucune valeur. Non déductible d'une image fixe — voir 07-motion.md,
-     bloqué par Q-01. Ne rien inventer ici.                                  */
+     UNE seule paire, employée partout (D-34). Choix Skilleo assumé, aucune
+     prétention à refléter la référence : Q-01 reste ouverte, une courbe ne
+     se déduit pas d'une image fixe. Une seconde durée est un défaut.        */
+  --motion-duration: 150ms;                        /* [P]                   */
+  --motion-easing:   cubic-bezier(0.2, 0, 0, 1);   /* [P] sortie décélérée  */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-duration: 1ms; }
 }
 
 /* ==========================================================================
@@ -136,8 +144,9 @@
   --text-tertiary:     #45464B;  /* [P]  extrapolé du rapport clair         */
   --border-subtle:     #1F1F1F;  /* [P]                                     */
 
-  --marker-positive:   #00A631;  /* [AV] non recalibré pour fond sombre     */
-  --marker-negative:   #E02B20;  /* [AV] non recalibré pour fond sombre     */
+  /* Marqueurs : volontairement NON redéfinis ici (D-33). Les valeurs du
+     thème clair franchissent le seuil 3:1 sur fond noir. Les redéclarer
+     serait deux valeurs de plus à maintenir sans rien résoudre.            */
 }
 
 /* ==========================================================================

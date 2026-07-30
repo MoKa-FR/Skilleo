@@ -83,7 +83,7 @@ Trois contraintes fermes :
 - **Jamais décorative.** Ces valeurs ne qualifient qu'une réponse. Aucune extension à un état de succès générique.
 - **Jamais sur une surface.** Pas de fond coloré, pas de bordure colorée, pas de bandeau.
 
-Les valeurs sont marquées `[AV]` dans `tokens.css` : le marqueur étant petit, elles devront être plus saturées qu'une couleur de texte pour rester lisibles à cette taille, et leur équivalent sombre n'est pas calibré.
+`D-33` arrête les deux valeurs, et pose qu'**une seule paire sert dans les deux thèmes**. Le raisonnement est là : le marqueur n'étant jamais du texte, le seuil applicable est celui des éléments non textuels, franchi sur fond blanc comme sur fond noir. Dédoubler aurait ajouté deux valeurs à maintenir sans rien résoudre. Les rapports calculés sont dans `D-33` et en commentaire de `tokens.css`.
 
 ---
 
@@ -160,7 +160,7 @@ Aucune hauteur de contrôle n'étant mesurable sur les intrants (`references/tra
 - `--radius` en vaut exactement **un quart** — le seul rayon mesuré du projet devient une fraction simple du contrôle, relation vérifiable de tête ;
 - `--type-question` reste nettement dominant, ce qu'exige la Loi 1.
 
-Elle satisfait aussi les cibles tactiles courantes, donc le régime étroit de `Q-10` n'imposera pas de seconde valeur.
+Elle satisfait aussi les cibles tactiles courantes, donc le régime étroit de `D-28` n'impose pas de seconde valeur.
 
 ---
 
@@ -196,9 +196,11 @@ Contraintes, détaillées dans `02-interactions.md` §2.2 : l'anneau ne se dessi
 
 ## 9. Mouvement
 
-**Rien ici, et rien dans `tokens.css`.** Aucune valeur de mouvement n'est déductible d'une image fixe.
+**Une seule paire durée/easing, et rien d'autre** (`D-34`).
 
-Durées et courbes appartiennent à `07-motion.md`, bloqué par `Q-01` faute d'enregistrements d'écran. Le rapport de ChatGPT avait inventé l'intégralité de ses valeurs de motion — on ne refera pas l'erreur en les inventant ici.
+Aucune valeur de mouvement n'est déductible d'une image fixe : `Q-01` reste ouverte, et le rapport de ChatGPT avait inventé l'intégralité de ses valeurs de motion. Mais l'alternative au blocage n'était pas « attendre », c'était « chaque composant invente sa durée ». Une valeur unique, assumée `[P]` et non `[D]`, coûte une ligne à réviser quand les enregistrements arriveront.
+
+**Règle d'emploi.** Toute transition du produit emploie `--motion-duration` et `--motion-easing`. Une seconde durée est un défaut, même juste. Sous `prefers-reduced-motion`, la durée tombe à `1ms` — le mouvement disparaît, l'état d'arrivée reste.
 
 ---
 
@@ -212,7 +214,7 @@ Durées et courbes appartiennent à `07-motion.md`, bloqué par `Q-01` faute d'e
 | Rayon de contrôle | Repli sur `--radius`, seule valeur mesurée |
 | Survol, focus, curseur | `D-12` : créations Skilleo assumées |
 | Ombres | Aucune nécessaire (§7) |
-| Durées, courbes | `07-motion.md`, bloqué |
+| Durées, courbes | Une paire `[P]` arrêtée par `D-34` — le reste attend `Q-01` |
 | Palette sombre hors texte | `--surface-subtle` et `--text-tertiary` extrapolés |
 
 ### 10.2 Marqué `[AV]` — ne pas implémenter
@@ -220,7 +222,8 @@ Durées et courbes appartiennent à `07-motion.md`, bloqué par `Q-01` faute d'e
 | Sujet | Ce qui manque |
 |---|---|
 | **Police** | Non identifiée sur les intrants |
-| **Marqueur sémantique** | Valeurs exactes, et calibrage pour le thème sombre |
+
+Le marqueur sémantique en est sorti : `D-33` l'a arrêté.
 
 ### 10.3 Conditionne tout le reste
 
@@ -235,3 +238,4 @@ Durées et courbes appartiennent à `07-motion.md`, bloqué par `Q-01` faute d'e
 | 2026-07-30 | Création. Deux palettes mesurées séparément (`D-24`). Échelle à deux régimes d'interligne. Rayon de référence unique. Aucune ombre. |
 | 2026-07-30 | `--h-control` ajouté (`D-25`), arrêté sur maquette comparative 44/48/52. |
 | 2026-07-30 | **Réécriture selon `D-27` : toutes les valeurs chiffrées sont retirées** et vivent désormais dans `tokens/tokens.css`, canonique. Ce document ne garde que le raisonnement et les règles. Marqueur sémantique limité à une icône (`D-26`). |
+| 2026-07-30 | `D-33` arrête le marqueur sémantique — une seule paire pour les deux thèmes, §2.2 et §10.2 réécrits. `D-34` ouvre le §9 : une paire durée/easing, `Q-01` reste ouverte pour le reste. |

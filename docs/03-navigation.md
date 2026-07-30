@@ -74,7 +74,13 @@ Le chrome permanent est réduit au strict minimum. Sur la référence, la barre 
 
 **Interdits :** un menu de navigation horizontal ; un onglet par fonctionnalité ; une pastille de notification ; tout élément promotionnel.
 
-En V0, le chrome se limite à l'identité et à la progression — les autres destinations n'existent pas.
+**Amendement `D-35` — la bascule de thème.** `Q-11` opposait `D-24` (deux thèmes, bascule accessible) à la restriction ci-dessus. `D-24` l'emporte : la bascule est le **premier accès d'anneau 4 à exister**, et elle entre dans le chrome permanent sans qu'un écran de réglages soit nécessaire.
+
+Elle vit en anneau 3 ou 4, jamais 0 ni 1 : dernier élément du chrome, à l'opposé de l'identité, en typographie de label, sans couleur propre. Elle ne concurrence ni l'énoncé, ni les options, ni l'action primaire.
+
+Au premier chargement, le thème suit la **préférence système** ; le thème clair de `D-24` est le défaut quand le système n'exprime rien. Un choix explicite l'emporte ensuite et persiste.
+
+En V0, le chrome se limite donc à l'identité, à la progression et à cette bascule — les autres destinations n'existent pas.
 
 ---
 
@@ -175,8 +181,7 @@ Deux destinations, trois panneaux. Aucune recherche, aucun index, aucun compte, 
 
 | Réf | Sujet |
 |---|---|
-| `Q-10` | Comportement sous 1024 px — proposition développée, en attente de validation |
-| `Q-10` | Ce régime étroit est-il dans le périmètre V0 ou hors périmètre assumé ? |
+| `D-28` | **Tranché** — trois régimes de largeur, panneau en surimpression sous 1024 px |
 | — | Structure de l'index de théorie : `D-16` impose une hiérarchie, sa forme reste à définir. Hors V0, non urgent |
 
 ---
@@ -186,3 +191,4 @@ Deux destinations, trois panneaux. Aucune recherche, aucun index, aucun compte, 
 | Date | Modification |
 |---|---|
 | 2026-07-30 | Création. Cadré par D-02, D-09, D-10, D-13, D-16, D-22, D-23. Débloqué par D-23 qui résout Q-03 pt 4. |
+| 2026-07-30 | Amendement du §3 par `D-35` : la bascule de thème entre dans le chrome permanent, `Q-11` est résolue. |

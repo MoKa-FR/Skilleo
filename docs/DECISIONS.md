@@ -23,8 +23,8 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 | [D-08](#d-08--le-modèle-ia-manipulable-est-prévu-mais-hors-v0) | Le modèle IA manipulable est prévu, mais hors V0 | `00-produit.md`, `06-ecrans.md` |
 | [D-09](#d-09--écran-en-deux-colonnes-de-rôles-asymétriques) | Écran en deux colonnes de rôles asymétriques | `03-navigation.md`, `06-ecrans.md` |
 | [D-10](#d-10--la-colonne-décisionnelle-est-à-gauche-définitivement) | La colonne décisionnelle est à gauche, définitivement | `06-ecrans.md` |
-| [D-11](#d-11--le-paragraphe-à-deux-tons-est-un-composant-de-premier-rang) | Le paragraphe à deux tons est un composant de premier rang | `05-composants.md` |
-| [D-12](#d-12--le-survol-est-un-dispositif-de-premier-rang-mais-ne-porte-jamais-seul) | Le survol est un dispositif de premier rang, mais ne porte jamais seul | `02-interactions.md`, `05-composants.md` |
+| [D-11](#d-11--le-paragraphe-à-deux-tons-est-un-composant-de-premier-rang) | Le paragraphe à deux tons est un composant de premier rang | `04-tokens.md`, `05-composants.md` |
+| [D-12](#d-12--le-survol-est-un-dispositif-de-premier-rang-mais-ne-porte-jamais-seul) | Le survol est un dispositif de premier rang, mais ne porte jamais seul | `01-ux-principes.md` (Loi 5), `02-interactions.md`, `05-composants.md` |
 | [D-13](#d-13--déclenchement-de-lindice) | Déclenchement de l'indice | `02-interactions.md`, `06-ecrans.md` |
 | [D-14](#d-14--on-répond-aux-flèches-on-valide-à-entrée) | On répond aux flèches, on valide à Entrée | `02-interactions.md`, `05-composants.md`, `06-ecrans.md` |
 | [D-15](#d-15--le-retour-saffiche-lutilisateur-enchaîne-lui-même) | Le retour s'affiche, l'utilisateur enchaîne lui-même | `02-interactions.md`, `06-ecrans.md` |
@@ -40,6 +40,17 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 | [D-25](#d-25--hauteur-de-contrôle--48-px) | Hauteur de contrôle : 48 px | `04-tokens.md` |
 | [D-26](#d-26--la-couleur-sémantique-se-limite-à-un-marqueur) | La couleur sémantique se limite à un marqueur | `04-tokens.md`, `05-composants.md`, `06-ecrans.md` |
 | [D-27](#d-27--les-valeurs-de-tokens-vivent-dans-un-fichier-css-canonique) | Les valeurs de tokens vivent dans un fichier CSS canonique | `04-tokens.md`, `08-conventions-code.md` |
+| [D-28](#d-28--trois-régimes-de-largeur-la-colonne-passive-passe-au-dessus) | Trois régimes de largeur, la colonne passive passe au-dessus | `04-tokens.md`, `05-composants.md`, `06-ecrans.md` |
+| [D-29](#d-29--le-clic-sélectionne-il-ne-répond-pas) | Le clic sélectionne, il ne répond pas | `05-composants.md`, `06-ecrans.md` |
+| [D-30](#d-30--la-trajectoire-du-produit-est-connue-et-elle-contraint-la-v0) | La trajectoire du produit est connue, et elle contraint la V0 | `09-contenu.md`, `10-architecture.md` |
+| [D-31](#d-31--la-progression-v0-est-un-journal-de-réponses-en-ajout-seul) | La progression V0 est un journal de réponses en ajout seul | `10-architecture.md`, `06-ecrans.md` |
+| [D-32](#d-32--séquence-fixe-aucun-moteur-de-sélection-en-v0) | Séquence fixe, aucun moteur de sélection en V0 | `09-contenu.md`, `10-architecture.md` |
+| [D-33](#d-33--les-deux-couleurs-de-marqueur-sont-arrêtées-identiques-dans-les-deux-thèmes) | Les deux couleurs de marqueur sont arrêtées, identiques dans les deux thèmes | `04-tokens.md` |
+| [D-34](#d-34--une-seule-paire-duréeeasing-en-v0) | Une seule paire durée/easing en V0 | `04-tokens.md`, `07-motion.md` |
+| [D-35](#d-35--deux-thèmes-et-une-bascule--d-24-lemporte) | Deux thèmes et une bascule : `D-24` l'emporte | `03-navigation.md`, `06-ecrans.md` |
+| [D-36](#d-36--un-seul-retour-par-question) | Un seul retour par question | `09-contenu.md`, `06-ecrans.md` |
+| [D-37](#d-37--la-notion-est-partagée-référencée-par-identifiant) | La notion est partagée, référencée par identifiant | `09-contenu.md` |
+| [D-38](#d-38--questions-en-yaml-notions-en-mdx) | Questions en YAML, notions en MDX | `09-contenu.md`, `08-conventions-code.md` |
 
 ⚠️ = comporte un point en attente d'arbitrage ou de validation en test.
 
@@ -47,7 +58,6 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 
 | Réf | Question | Bloque |
 |---|---|---|
-| [Q-10](#q-10--comportement-sous-1024-px) | Comportement sous 1024 px | `06-ecrans.md` |
 | [Q-09](#q-09--comment-apprend-on-quelque-chose-de-la-v0-) | Comment apprend-on quelque chose de la V0 ? | — |
 | [Q-01](#q-01--intrants-de-mesure-trade-republic) | Intrants de mesure Trade Republic | `04-tokens.md`, `05-composants.md`, `07-motion.md` |
 | [Q-03](#q-03--grammaire-desktop--ce-qui-reste-à-inventer) | Grammaire desktop : ce qui reste à inventer | — |
@@ -475,7 +485,7 @@ Trois arguments l'ont emporté :
 
 **Ce que ça exclut :** une hauteur de contrôle variable selon le composant ; un bouton plus haut que son option voisine ; toute justification de 44 ou 52 px par un renvoi à la référence, qui ne dit rien sur ce point.
 
-**Compatible tactile.** 48 px satisfait les recommandations de cible tactile courantes (44 px côté Apple, 48 px côté Material). Le régime sous 1024 px de `Q-10` n'imposera donc **pas** de hauteur différente — seule la largeur des cibles restera à vérifier, puisqu'une option occupe alors toute la colonne.
+**Compatible tactile.** 48 px satisfait les recommandations de cible tactile courantes (44 px côté Apple, 48 px côté Material). Le régime sous 1024 px de `D-28` n'impose donc **pas** de hauteur différente — seule la largeur des cibles restera à vérifier, puisqu'une option occupe alors toute la colonne.
 
 **Révisable si :** des questions à quatre ou cinq options apparaissent, ou si des énoncés longs comprimaient trop la colonne décisionnelle.
 
@@ -525,25 +535,8 @@ Chaque valeur n'existe donc qu'une fois, ce qui satisfait enfin « aucun sujet d
 
 ---
 
-## Questions ouvertes
-
-Ordre de priorité décroissante. Rien de bloqué par ces questions ne doit être implémenté.
-
-### Q-10 — Comportement sous 1024 px
-**Bloque :** `06-ecrans.md` · **Ne bloque pas** `03-navigation.md` ni `04-tokens.md`
-**Statut :** proposition développée ci-dessous, **en attente de validation de Mohamed**
-
-`D-09` et `D-10` fixent une mise en page à deux colonnes. Sous une certaine largeur, elle ne tient plus. Ce n'est pas tranché, et l'empilement naïf est un mauvais réflexe : il annulerait le bénéfice central de `D-09` — le retour, passant sous l'énoncé, décalerait le contenu au moment le plus sensible de la boucle.
-
-#### Constat qui change l'analyse
-
-**Le noyau de Skilleo est intrinsèquement adapté aux écrans étroits.** Un énoncé et deux options est la disposition la plus naturelle qui existe sur un écran de téléphone. Ce n'est pas la question qui pose problème sous 1024 px, c'est **uniquement la colonne passive.**
-
-Et il y a une conséquence qu'il faut nommer : **c'est le seul endroit où la référence mobile de Trade Republic devient pertinente.** La feuille montant du bas, que `D-23` interdit au-dessus de 1024 px parce qu'elle n'a aucun sens sur un écran large, est exactement le bon dispositif en dessous. La référence n'est pas inutile — elle était simplement appliquée au mauvais viewport.
-
-#### Proposition en trois points
-
-**1. Trois régimes de largeur.**
+### D-28 — Trois régimes de largeur, la colonne passive passe au-dessus
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Résout :** `Q-10` · **Impacte :** `04-tokens.md`, `05-composants.md`, `06-ecrans.md`
 
 | Largeur | Régime |
 |---|---|
@@ -551,23 +544,197 @@ Et il y a une conséquence qu'il faut nommer : **c'est le seul endroit où la r�
 | 1024–1279 px | Deux colonnes, gouttière et colonne passive resserrées |
 | < 1024 px | Colonne unique, colonne passive convertie en panneau **en surimpression** |
 
-**2. La colonne passive passe au-dessus, jamais en dessous.**
+**Le constat qui a orienté la décision.** Le noyau de Skilleo est intrinsèquement adapté aux écrans étroits : un énoncé et deux options est la disposition la plus naturelle qui existe sur un petit écran. Ce n'est pas la question qui pose problème sous 1024 px, **c'est uniquement la colonne passive.**
 
-Sous 1024 px, le contenu de la colonne passive — indice, notion, retour — s'ouvre en panneau **par-dessus** la colonne décisionnelle, ancré en bas. L'énoncé ne se décale donc pas : il est recouvert, pas poussé. Le bénéfice de `D-09` est préservé par un autre moyen.
+**La colonne passive passe au-dessus, jamais en dessous.** Sous 1024 px, indice, notion et retour s'ouvrent en panneau **par-dessus** la colonne décisionnelle, ancré en bas. L'énoncé ne se décale donc pas : il est recouvert, pas poussé. Le bénéfice central de `D-09` est préservé par un autre moyen.
+
+L'empilement vertical naïf est explicitement rejeté : il ferait passer le retour sous l'énoncé, donc décalerait le contenu au moment le plus sensible de la boucle.
 
 La progression, seul contenu permanent de la colonne passive, migre vers une ligne fine sous l'en-tête.
 
-**3. Le toucher remplace le clavier, sans perdre le principe de `D-14`.**
+**Où la référence mobile redevient légitime.** La feuille montant du bas, que `D-23` interdit au-dessus de 1024 px parce qu'elle n'a aucun sens sur un écran large, est exactement le bon dispositif en dessous. `D-23` l'avait anticipé en bornant son interdiction. La référence n'était pas inutile — elle était appliquée au mauvais viewport.
 
-`D-14` impose que le déplacement ne valide jamais. Sur un écran tactile, un appui mal placé est plus probable qu'une erreur de flèche — le principe est donc **plus** nécessaire, pas moins. Proposition : un appui **sélectionne**, une action de validation explicite **répond**. Le geste passe de deux temps à deux temps, la cohérence est conservée.
+**Le toucher conserve le principe de `D-14`.** Un appui **sélectionne**, une validation explicite **répond**. Sur un écran tactile, un appui mal placé est plus probable qu'une erreur de flèche : le principe « le déplacement ne valide jamais » est donc **plus** nécessaire, pas moins.
 
-#### Ce que cette proposition exclut, si elle est retenue
-
-L'empilement vertical naïf de la colonne passive sous la colonne décisionnelle ; un écran d'invitation à élargir la fenêtre ; un appui unique qui vaudrait réponse ; et l'absence de spécification sous 1024 px.
-
-**À arbitrer aussi :** ce régime est-il dans le périmètre V0, ou hors périmètre assumé ? `D-22` ne le tranche pas. La proposition ci-dessus a un coût réel — un dispositif de panneau supplémentaire et une grammaire tactile — qui ne se justifie que si des utilisateurs de la V0 arrivent sur écran étroit.
+**Ce que ça exclut :** l'empilement vertical de la colonne passive sous la colonne décisionnelle ; un écran d'invitation à élargir la fenêtre ; un appui unique valant réponse ; l'absence de spécification sous 1024 px ; une hauteur de contrôle différente en régime étroit (`D-25` couvre les deux, seule la largeur des cibles est à vérifier).
 
 ---
+
+### D-29 — Le clic sélectionne, il ne répond pas
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Découle de :** `D-14` + `D-28` · **Impacte :** `05-composants.md`, `06-ecrans.md`
+
+Cliquer une option la **sélectionne**. Répondre demande une **action de validation explicite**. Les trois chemins d'entrée se comportent identiquement.
+
+| Chemin | Sélectionner | Répondre |
+|---|---|---|
+| Clavier | Flèches | `Entrée` |
+| Souris | Clic sur l'option | Clic sur l'action primaire |
+| Tactile | Appui sur l'option | Appui sur l'action primaire |
+
+**Raison — un trou révélé en rédigeant `06-ecrans.md`.** `D-14` spécifiait le clavier, `D-28` le tactile. **Personne n'avait spécifié la souris.** Deux défauts en découlaient :
+
+1. **Asymétrie.** La souris aurait été à un temps quand le clavier et le tactile en demandent deux. La Loi 6 exige une grammaire unique.
+2. **Irréversibilité, et c'est le motif décisif.** Un clic mal placé aurait enregistré une réponse fausse sans retour possible. Dans une application dont le noyau est de répondre et qui mesure les réponses, c'est inacceptable — bien plus grave que le temps supplémentaire que la validation coûte.
+
+**Conséquence de conception, bénéfique.** L'emplacement de l'action primaire devient **stable sur toute la boucle** : il porte « Valider » avant la réponse, « Question suivante » après. Position fonctionnelle inchangée, libellé changeant — exactement ce qu'exige `01-ux-principes.md` §3.2. L'utilisateur agit sans relire.
+
+**Ce que ça exclut :** un clic valant réponse ; un double-clic comme raccourci de validation ; une action primaire qui apparaît seulement après sélection — elle est présente dès le départ, et son emploi sans sélection est traité par un retour, pas par un état désactivé (`05-composants.md` §2).
+
+---
+
+### D-30 — La trajectoire du produit est connue, et elle contraint la V0
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Requalifie :** `D-20` · **Impacte :** `09-contenu.md`, `10-architecture.md`
+
+Quatre orientations arbitrées, qui ne s'implémentent pas en V0 mais dictent la forme de ce qu'on y écrit :
+
+| Orientation | Horizon |
+|---|---|
+| Le produit servira aussi des **formateurs**, pas seulement des apprenants | À terme |
+| Un **modèle génératif** sera appelé pour produire ou adapter du contenu | À terme, déjà cadré par `D-08` |
+| Les **comptes** arrivent **juste après la V0** | Immédiatement après |
+| Les **entreprises** deviennent un client, avec une notion d'organisation | À terme |
+
+**Ce que ça change, et c'est le point.** `D-20` mettait le contenu en MDX versionné. Cette décision était formulée comme un principe ; elle redevient ce qu'elle est : **un choix de V0.** La migration vers une base est désormais **certaine**, pas hypothétique — trois des quatre orientations la rendent inévitable, et deux d'entre elles arrivent tôt.
+
+**Conséquence structurante :** le schéma de contenu doit se projeter en tables **sans réécriture éditoriale.** Concrètement, toute unité de contenu porte un identifiant stable, les relations passent par identifiant et non par emplacement de fichier, et rien de significatif ne vit dans un nom de dossier. C'est la contrainte fondatrice de `09-contenu.md`.
+
+La notion d'**organisation** est posée dès la première migration, pas rétro-ajoutée. Elle n'existe sous aucune forme en V0.
+
+**Ce que ça exclut :** traiter le MDX comme définitif ; un schéma dont l'identité d'une question dépendrait de son chemin de fichier ou de son rang dans la séquence ; construire quoi que ce soit de multi-utilisateur, de multi-rôle ou d'organisation en V0 — `D-22` reste la frontière.
+
+---
+
+### D-31 — La progression V0 est un journal de réponses en ajout seul
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Découle de :** `D-30` + `D-22` · **Impacte :** `10-architecture.md`, `06-ecrans.md`
+
+Le stockage navigateur de `D-22` contient un **journal d'événements en ajout seul** — une entrée par réponse validée — et non un état agrégé.
+
+Chaque entrée porte : l'identifiant de la question, l'option retenue, sa justesse, l'horodatage, et si l'indice avait été consulté avant de répondre. Le journal porte en tête une **version de schéma**.
+
+**Raison.** Les comptes arrivent juste après la V0 (`D-30`). Un journal en ajout seul se rejoue tel quel côté serveur : la migration consiste à envoyer les entrées, dans l'ordre, à un point d'entrée qui les insère. Un état agrégé, lui, aurait perdu l'information nécessaire pour reconstituer l'historique. Le surcoût aujourd'hui est nul — c'est la même quantité de code.
+
+**Tout le reste se calcule.** La question courante, le récapitulatif de fin, le compte de réussites : aucun n'est stocké. Un état dérivé qu'on stocke est un état qui peut diverger de sa source.
+
+**Version de schéma obligatoire.** Un journal dont la version est inconnue ou supérieure à celle que le code sait lire est **ignoré, pas réparé** : le parcours repart de zéro. Une tentative de réparation silencieuse produirait un état inventé, ce qu'interdit la règle numéro un.
+
+**Ce que ça exclut :** un état agrégé comme source de vérité ; un stockage sans version ; une migration de schéma côté client en V0 ; l'écriture du journal ailleurs qu'au moment d'une réponse validée — la sélection ne s'écrit pas (`D-29`).
+
+---
+
+### D-32 — Séquence fixe, aucun moteur de sélection en V0
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Impacte :** `09-contenu.md`, `10-architecture.md`
+
+L'ordre des questions du parcours est **écrit**, pas calculé. L'avancement est un **curseur** : le rang de la première question du parcours qui n'a pas d'entrée dans le journal de `D-31`.
+
+**Raison.** Un moteur de sélection est une fonctionnalité à part entière, avec ses propres questions de conception, et la V0 ne cherche pas à le valider. Elle valide le tempo de la boucle (`D-22`). Un ordre fixe rend en outre chaque session comparable à la précédente, ce dont `Q-09` aura besoin.
+
+**Ce que ça exclut :** l'adaptativité, le tirage aléatoire, la répétition espacée, la difficulté dynamique, le saut de question, le retour en arrière sur une question déjà répondue. Aucune de ces fonctions n'a de « petite version » en V0.
+
+---
+
+### D-33 — Les deux couleurs de marqueur sont arrêtées, identiques dans les deux thèmes
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** pour les valeurs · **Complète :** `D-26` · **Impacte :** `tokens/tokens.css`, `04-tokens.md`
+
+`--marker-positive: #00A631` et `--marker-negative: #E02B20` passent de `[AV]` à `[PROPOSÉ]`. **Les mêmes deux valeurs servent en thème clair et en thème sombre.**
+
+**Pourquoi une seule paire suffit, alors que `#9B9B9B` / `#686A70` ont dû être dédoublés.** `D-26` restreint le marqueur à une icône ou un point — jamais du texte. Le seuil applicable est donc celui des éléments non textuels, 3:1, et non 4,5:1. Rapports calculés :
+
+| Couleur | Sur `#FFFFFF` | Sur `#000000` |
+|---|---|---|
+| `#00A631` | 3,23:1 | 6,50:1 |
+| `#E02B20` | 4,63:1 | 4,54:1 |
+
+Les quatre franchissent le seuil. Dédoubler aurait ajouté deux valeurs à maintenir sans rien résoudre.
+
+**Ce qui reste vrai malgré tout.** `D-26` n'est pas assoupli : le marqueur ne porte jamais l'information seul. La justesse d'une réponse reste lisible sans percevoir la couleur — forme du marqueur et retour rédigé. Un daltonien profond doit pouvoir faire le parcours entier.
+
+**Ce que ça exclut :** un fond coloré de bonne ou mauvaise réponse ; l'emploi de ces deux couleurs ailleurs que sur le marqueur ; une troisième couleur sémantique ; un recalibrage par thème tant que le marqueur reste non textuel — s'il devenait un jour du texte, cette décision tombe et le seuil redevient 4,5:1.
+
+---
+
+### D-34 — Une seule paire durée/easing en V0
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Débloque partiellement :** `Q-01` · **Impacte :** `tokens/tokens.css`, `07-motion.md`
+
+La V0 dispose d'**une** durée et d'**un** easing, employés partout où quelque chose bouge :
+
+- `--motion-duration: 150ms`
+- `--motion-easing: cubic-bezier(0.2, 0, 0, 1)` — sortie décélérée
+- Sous `prefers-reduced-motion: reduce`, la durée passe à `1ms`.
+
+**Raison.** `Q-01` bloquait `07-motion.md` faute d'enregistrement d'écran de la référence, et le blocage était juste : on ne déduit pas une courbe d'une image fixe. Mais l'alternative n'était pas « attendre », c'était « chaque composant invente sa durée » — soit exactement la dérive que `D-27` cherche à empêcher. Une valeur unique, assumée comme un choix Skilleo et non comme une mesure, coûte une ligne à réviser le jour où les enregistrements arrivent.
+
+**Ces valeurs ne prétendent rien de Trade Republic.** Elles sont marquées `[PROPOSÉ]`, pas `[DÉDUIT]`. `Q-01` reste ouverte pour tout le reste.
+
+**Ce que ça exclut :** une seconde durée, un second easing, un rebond, un délai en cascade, une animation d'entrée d'écran ; toute durée écrite dans un composant.
+
+---
+
+### D-35 — Deux thèmes et une bascule : `D-24` l'emporte
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Résout :** `Q-11` · **Impacte :** `03-navigation.md`, `06-ecrans.md`
+
+`Q-11` opposait `D-24` (deux thèmes actifs, bascule accessible) à `D-22` (pas d'écran de réglages) et à `03-navigation.md` §3 (chrome minimal). **`D-24` est confirmée sans réserve.** C'est `03-navigation.md` §3 qui est amendé.
+
+**Domicile de la bascule :** le chrome permanent, comme accès discret d'anneau 4. Le §3 autorisait déjà « un accès discret aux destinations d'anneau 1 et 4, quand elles existeront » — la bascule est la première à exister. L'amendement consiste à lever la restriction « en V0, le chrome se limite à l'identité et à la progression ».
+
+**Contrainte d'anneau, explicite.** La bascule vit en anneau 3 ou 4. Elle n'entre jamais en anneau 0 ni 1 : elle ne concurrence ni l'énoncé, ni les options, ni l'action primaire. Concrètement, elle est le dernier élément du chrome, à l'opposé de l'identité, en typographie de label et sans couleur propre.
+
+**Défaut au premier chargement :** la préférence système. Le thème clair de `D-24` est le défaut **quand le système n'exprime rien**. Le choix explicite de l'utilisateur, lui, l'emporte sur le système et persiste — même mécanisme de stockage que `D-31`, entrée distincte du journal.
+
+**Ce que ça exclut :** un écran de réglages en V0 (`D-22` tient sur tout le reste) ; une bascule en position d'action ; une transition de thème animée ; un thème imposé sans possibilité de changer.
+
+---
+
+### D-36 — Un seul retour par question
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Précise :** `D-15` · **Impacte :** `09-contenu.md`, `06-ecrans.md`
+
+Le retour court de `D-15` est **un texte unique par question**, affiché quelle que soit l'option retenue. Le marqueur dit si c'est juste ; le retour explique la bonne réponse.
+
+**Raison.** Un retour par option aurait multiplié la charge de rédaction par le nombre d'options, et `D-22` établit que **la rédaction est le goulot d'étranglement du projet, pas le code.** À budget de rédaction constant, un retour unique sur un parcours entier vaut mieux qu'un retour ciblé sur un tiers de parcours.
+
+**La limite, à assumer.** L'utilisateur qui se trompe apprend ce qui était juste, pas pourquoi *son* choix était faux. C'est une perte pédagogique réelle. Elle est acceptée pour la V0 et doit être réexaminée quand `Q-09` livrera ses résultats.
+
+**Conséquence rédactionnelle.** Le retour étant lu autant après une erreur qu'après une réussite, il ne peut ni féliciter, ni sanctionner : il énonce. `01-ux-principes.md` §5 interdisait déjà la célébration ; ici c'est la structure du contenu qui l'interdit en plus.
+
+**Ce que ça exclut :** un retour par option ; un champ facultatif de réfutation par option — le schéma ne le prévoit pas, pour ne pas créer un contenu à deux régimes ; un retour différent selon que l'indice a été consulté.
+
+---
+
+### D-37 — La notion est partagée, référencée par identifiant
+**Date :** 2026-07-30 · **Statut :** actif · **Choix de Mohamed** · **Précise :** `D-16` · **Impacte :** `09-contenu.md`
+
+Les notions vivent dans leurs **propres fichiers**. Chaque question **pointe vers un identifiant de notion**. Plusieurs questions peuvent viser la même notion ; chaque résumé n'est écrit qu'une fois.
+
+**Raison.** C'est `D-27` appliqué au contenu : une chose n'existe qu'à un endroit. Écrire le résumé dans le fichier de la question aurait dupliqué tout résumé réutilisé, et une duplication finit toujours par diverger. C'est aussi ce qui rend la projection en tables de `D-30` immédiate — une table de questions, une table de notions, une clé étrangère.
+
+**La référence est obligatoire.** Toute question désigne exactement une notion. Aucune question sans notion : le panneau de la colonne passive n'a donc jamais d'état vide à traiter, ce qui retire un état à `06-ecrans.md` plutôt que d'en ajouter un.
+
+**Une référence brisée arrête la construction.** Une question pointant vers un identifiant inexistant fait échouer le `build`, elle ne dégrade pas l'affichage. Un contenu manquant ne se rattrape pas silencieusement.
+
+**Ce que ça exclut :** un résumé de notion écrit dans le fichier d'une question ; une question sans notion ; une notion référencée par son chemin de fichier plutôt que par son identifiant ; plusieurs notions par question — si une question en demande deux, elle demande à être scindée.
+
+---
+
+### D-38 — Questions en YAML, notions en MDX
+**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Précise :** `D-20` · **Impacte :** `09-contenu.md`, `08-conventions-code.md`
+
+Le contenu éditorial reste en fichiers versionnés (`D-20`), réparti en deux formats :
+
+| Unité | Format | Pourquoi |
+|---|---|---|
+| Parcours, question | `.yaml` | Aucune prose à mettre en forme — un énoncé, des libellés, deux phrases de retour, tous sans titre ni lien |
+| Notion | `.mdx` | De la prose : emphase, énumération, exemple |
+
+**Raison.** `D-20` disait « MDX » quand la seule alternative envisagée était une table Supabase ; le point de la décision était « fichiers versionnés », pas le format. Or une question est de la donnée structurée : la mettre en MDX obligerait soit à tout empiler dans le frontmatter en laissant un corps vide, soit à inventer des séparateurs dans le corps pour délimiter l'énoncé, l'indice et le retour. Les deux ajoutent une convention à respecter sans rien apporter.
+
+**Ce que ça ne change pas.** Le contenu reste dans le dépôt, relu en `diff`, sans back-office (`D-22`). La projection en tables de `D-30` est identique pour les deux formats.
+
+**Ce que ça exclut :** une notion en YAML ; une question en MDX ; un troisième format ; du JSON, qui n'admet pas de commentaire et supporte mal les textes multilignes.
+
+---
+
+## Questions ouvertes
+
+Ordre de priorité décroissante. Rien de bloqué par ces questions ne doit être implémenté.
 
 ### Q-09 — Comment apprend-on quelque chose de la V0 ?
 **Découle de :** `D-22` · **Ne bloque aucun document**, mais bloque l'utilité de la V0
@@ -608,9 +775,9 @@ Ce qui manque encore, par ordre d'utilité :
 Skilleo est desktop-first ; Trade Republic est une application mobile. La mise en page est tranchée par `D-09`. Ce qui suit ne l'est pas, et **n'a aucune référence copiable** — ni dans l'app mobile, ni dans les captures du site.
 
 1. **Les états de survol.** Trade Republic n'en a aucun : c'est une app tactile. Sur desktop, c'est une part majeure de la sensation d'interface. À définir de zéro, dans l'esprit de la référence. Nécessite `Q-01` point 3.
-2. **La grammaire clavier.** Répondre à une question au clavier est vraisemblablement le mode d'interaction principal du noyau : choisir une option, valider, ouvrir un indice, fermer une surface. À inventer entièrement.
+2. ~~La grammaire clavier~~ — **résolu par `D-14`, `D-17`, `D-29`** et spécifié dans `02-interactions.md` §5.
 3. **Le curseur et le focus.** Anneaux de focus, affordances de curseur : absents de la référence.
-4. **Les surfaces secondaires.** Une feuille montant du bas n'a pas de sens sur 924 px de haut. Surface centrée, ou panneau latéral occupant la colonne passive de `D-09` ? Cette seconde option serait plus cohérente avec la mise en page retenue.
+4. ~~Les surfaces secondaires~~ — **résolu par `D-23`** : panneaux dans la colonne passive.
 
 **Ce qui se transpose sans difficulté** — établi par les mesures, voir `references/trade-republic-web.md` : noir et blanc purs, typographie lourde à interligne serré, information principale très grande, plein cadre à gouttière fine, aucune carte décorative, couleur strictement fonctionnelle, quasi-absence d'ombres, icône à droite du libellé.
 

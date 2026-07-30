@@ -196,8 +196,8 @@ Skilleo est desktop-first. Il recevra malgré tout des portables tactiles et des
 | `D-13` | Le raccourci de l'indice |
 | `D-17` | Validation en test de la garde `keyup` |
 | `Q-01` | Valeurs de l'anneau de focus — dépendent des tokens de couleur |
-| `Q-01` | Durées de transition entre états — dépendent de `07-motion.md`, lui-même bloqué faute d'enregistrements d'écran |
-| `Q-03` | Surfaces secondaires : surface centrée ou panneau occupant la colonne passive |
+| `D-34` | Quelles transitions existent entre états — la paire durée/easing est arrêtée, son emploi ne l'est pas |
+| `D-23` | **Tranché** — les surfaces secondaires sont des panneaux dans la colonne passive |
 
 ---
 
