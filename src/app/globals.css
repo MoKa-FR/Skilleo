@@ -196,22 +196,9 @@
   font-variant-numeric: tabular-nums lining-nums;
 }
 
-/* ==========================================================================
-   Motif — 05-composants.md §7 (D-51). Trois points, noir et blanc, pulsant
-   en boucle avec la seule paire durée/easing du système : chaque cycle dure
-   exactement --motion-duration, répété en alternance à l'infini plutôt que
-   d'introduire une durée d'animation nouvelle. Sous prefers-reduced-motion,
-   --motion-duration tombe à 1ms : le motif reste visible, immobile.
-   ========================================================================== */
-
-@keyframes motif-pulse {
-  from { opacity: 0.35; }
-  to { opacity: 1; }
-}
-
-.motif-point {
-  animation: motif-pulse var(--motion-duration) var(--motion-easing) infinite alternate;
-}
+/* Motif (D-51) : le GIF fourni (public/motif/) porte sa propre animation,
+   servi tel quel — le repli statique sous prefers-reduced-motion n'a besoin
+   d'aucune règle ici, voir src/components/Motif.tsx. */
 
 /* ==========================================================================
    Base — hors périmètre de tokens.css : ce que consomme le document, pas un
