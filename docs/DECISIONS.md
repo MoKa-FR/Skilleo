@@ -57,6 +57,13 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 | [D-42](#d-42--charte-de-rédaction-du-contenu-opposable-limitée-au-contenu) | Charte de rédaction du contenu, opposable, limitée au contenu | `09-contenu.md` |
 | [D-43](#d-43--fidélité-factuelle-du-contenu--aucun-chiffre-sans-source) | Fidélité factuelle du contenu : aucun chiffre sans source | `09-contenu.md` |
 | [D-44](#d-44--on-contextualise-avant-de-vulgariser-et-jamais-par-la-syntaxe) | On contextualise avant de vulgariser, et jamais par la syntaxe | `09-contenu.md` |
+| [D-45](#d-45--le-cadre-est-plafonné-en-largeur-puis-centré) | Le cadre est plafonné en largeur, puis centré | `04-tokens.md`, `06-ecrans.md` |
+| [D-46](#d-46--le-bloc-décisionnel-est-centré-verticalement-à-hauteur-constante) | Le bloc décisionnel est centré verticalement, à hauteur constante | `04-tokens.md`, `06-ecrans.md` |
+| [D-47](#d-47--le-déclencheur-au-repos-est-lisible) | ~~Le déclencheur au repos est lisible~~ — **caduque, `D-50`** | `02-interactions.md`, `05-composants.md`, `06-ecrans.md` |
+| [D-48](#d-48--lindice-et-lexplication-sécrivent-à-deux-tons) | L'indice et l'explication s'écrivent à deux tons | `05-composants.md`, `09-contenu.md`, `06-ecrans.md` |
+| [D-49](#d-49--trois-moments-exclusifs-jamais-deux-contenus-à-la-fois) | Trois moments exclusifs, jamais deux contenus à la fois | `02-interactions.md`, `06-ecrans.md` |
+| [D-50](#d-50--le-contenu-passif-est-appelé-par-la-latence-plus-par-un-déclencheur) | Le contenu passif est appelé par la latence, plus par un déclencheur ⚠️ | `02-interactions.md`, `05-composants.md`, `06-ecrans.md` |
+| [D-51](#d-51--un-motif-animé-noir-et-blanc-tranché-en-proposé) | Un motif animé noir et blanc, tranché en `[PROPOSÉ]` | `04-tokens.md`, `05-composants.md`, `07-motion.md` |
 
 ⚠️ = comporte un point en attente d'arbitrage ou de validation en test.
 
@@ -65,6 +72,9 @@ Une ligne par décision. Le raisonnement complet et « ce que ça exclut » sont
 | Réf | Question | Bloque |
 |---|---|---|
 | [Q-01](#q-01--intrants-de-mesure-trade-republic) | Intrants de mesure Trade Republic | `07-motion.md` — et déclenche la révision de `D-34` et `D-39` |
+| [Q-12](#q-12----text-secondary-ne-franchit-pas-le-seuil-de-texte) | `--text-secondary` ne franchit pas le seuil de contraste du texte | la case « thèmes et accessibilité » de `06-ecrans.md` §8 |
+| [Q-13](#q-13--le-repère-de-position-et-progression-disent-la-même-chose) | Le repère de position et `Progression` portent la même phrase | l'écran de question |
+| [Q-14](#q-14--le-trou-clavier-tactile-et-sous-1024-px) | Le trou clavier, tactile et sous 1024 px | la case « parcours clavier » de `06-ecrans.md` §8 et le régime étroit de `D-28` |
 
 **Questions résolues** — conservées pour l'historique de raisonnement (règle 5 du `README`).
 
@@ -240,7 +250,9 @@ Skilleo est une **application desktop**. Le survol, le focus, le curseur et le c
 ---
 
 ### D-13 — Déclenchement de l'indice
-**Date :** 2026-07-30 · **Statut :** actif · **Résout :** `Q-07` · **Impacte :** `02-interactions.md`, `06-ecrans.md`
+**Date :** 2026-07-30 · **Statut :** ~~actif~~ **révoquée par `D-50`** — conservée pour son raisonnement sur le signal mesuré · **Résout :** `Q-07` · **Impacte :** `02-interactions.md`, `06-ecrans.md`
+
+> ⚠️ La ligne « Repos » du tableau ci-dessous est **caduque** : `D-47` remplace `textTertiary` par `textSecondary`. Le reste de la décision est inchangé.
 
 La colonne passive contient, avant toute réponse, **une seule ligne discrète** : `Indice`.
 
@@ -549,7 +561,7 @@ Chaque valeur n'existe donc qu'une fois, ce qui satisfait enfin « aucun sujet d
 ---
 
 ### D-28 — Trois régimes de largeur, la colonne passive passe au-dessus
-**Date :** 2026-07-30 · **Statut :** actif · `[PROPOSÉ]` · **Résout :** `Q-10` · **Impacte :** `04-tokens.md`, `05-composants.md`, `06-ecrans.md`
+**Date :** 2026-07-30 · **Statut :** actif, **partiellement révoquée de fait par `D-50`** (`Q-14` point 2) · `[PROPOSÉ]` · **Résout :** `Q-10` · **Impacte :** `04-tokens.md`, `05-composants.md`, `06-ecrans.md`
 
 | Largeur | Régime |
 |---|---|
@@ -865,6 +877,132 @@ Tout contenu Skilleo suit une progression imposée : **contextualiser, puis vulg
 
 ---
 
+### D-45 — Le cadre est plafonné en largeur, puis centré
+**Date :** 2026-07-31 · **Statut :** actif · `[DÉDUIT]` · **Choix de Mohamed** · **Amende :** `D-09` · **Impacte :** `04-tokens.md`, `06-ecrans.md`
+
+Les pourcentages de colonnes de `D-09` ne s'appliquent plus au viewport mais à un **cadre plafonné en largeur, centré**. En deçà du plafond rien ne change, le plein cadre reste vrai. Au-delà, le cadre cesse de se dilater et le reste se répartit également de chaque côté.
+
+**Le plafond n'est pas un choix esthétique, c'est une réconciliation.** `--gutter` a été **mesuré en relatif** — 1,1 % du viewport de référence — puis figé en **absolu**, 16 px. Les deux ne coïncident qu'à une seule largeur : celle du viewport de référence normalisé, **1469 px CSS**. Plafonner le cadre là rend au token sa mesure — au plafond, `--gutter` vaut de nouveau 1,1 % du cadre. À 2560 px il n'en valait plus que 0,6 %, et l'argument de `04-tokens.md` §4.1 était devenu faux sans que rien ne le signale.
+
+**Cohérence avec `D-28` :** 1469 px est supérieur à 1280 px, seuil de la disposition nominale. Les trois régimes de largeur continuent de se lire sur le **viewport**, jamais sur le cadre — le plafond ne crée pas un quatrième régime.
+
+**Ce que ça n'améliore pas.** Sous 1469 px — donc sur la capture qui a motivé cette décision — `D-45` ne change **rien**. Elle empêche une dégradation sur écran large, elle ne remplit aucun vide. Le vide constaté relève de `D-46`.
+
+⚠️ **Le plafond hérite de l'incertitude de `Q-01` point 4.** 1469 px est `[DÉDUIT]` et non confirmé. Si la normalisation est fausse, le plafond l'est du même facteur constant que tous les px du projet. Il ne dégrade rien de plus, mais il ne se présente pas comme mesuré.
+
+**Ce que ça exclut :** un cadre plafonné dont les colonnes repasseraient en largeurs fixes ; un plafond inférieur à 1280 px, qui écraserait le régime nominal de `D-28` ; une valeur de plafond par gabarit.
+
+---
+
+### D-46 — Le bloc décisionnel est centré verticalement, à hauteur constante
+**Date :** 2026-07-31 · **Statut :** actif · `[PROPOSÉ]` · **Choix de Mohamed** · **Comble :** l'absence totale de règle verticale · **Impacte :** `04-tokens.md`, `06-ecrans.md`
+
+**Le trou que cette décision comble.** `04-tokens.md` §4.1 affirmait que la respiration vient « du découpage en colonnes **et du vide vertical** ». Le projet spécifiait ensuite 100 % des colonnes et 0 % du vertical. L'implémentation a donc aligné en haut dans un conteneur étiré, produisant une zone morte de plus de la moitié de la hauteur. C'est la conséquence mécanique d'un manque, pas une liberté prise par l'implémenteur.
+
+**La règle.** Le bloc décisionnel — repère, énoncé, groupe d'options, action primaire — est **centré verticalement dans la hauteur disponible sous le chrome**. La colonne passive partage son bord supérieur et s'écoule vers le bas ; la progression reste le dernier élément de ce flux et n'est **jamais** ancrée au bas de la fenêtre.
+
+**La contrainte qui rend la règle applicable, et qui n'est pas négociable : `G3`.** Un bloc centré dont la hauteur varie déplace l'énoncé, ce que `G3` interdit. Donc **la hauteur du bloc décisionnel ne varie pas entre les états d'une même question.** Conséquence directe : le retour local « choisis une option avant de valider » occupe un **emplacement à hauteur réservée**, présent et vide tant qu'il ne s'affiche pas. Sans cette réserve, centrage et `G3` sont incompatibles — et c'est `G3` qui l'emporterait.
+
+**Dégradation.** Si le bloc dépasse la hauteur disponible, le centrage cède : alignement en haut, la page défile. Un contenu tronqué ou un bloc centré en débordement sont deux échecs, pas des cas limites.
+
+**Ce que ça exclut :** un centrage calculé sur un contenu de hauteur variable ; une progression collée au bas de la fenêtre ; le remplissage du vide par un élément décoratif. Le vide vertical reste un moyen de respiration — il est désormais **réparti**, au lieu d'être accumulé en bas.
+
+---
+
+### D-47 — Le déclencheur au repos est lisible
+**Date :** 2026-07-31 · **Statut :** ~~actif~~ **caduque le jour même, `D-50` supprime le composant** · `[PROPOSÉ]` · **Choix de Mohamed** · **Amende :** `D-13` · **Ouvre :** `Q-12` · **Impacte :** `02-interactions.md`, `05-composants.md`, `06-ecrans.md`
+
+| État | `D-13` | `D-47` |
+|---|---|---|
+| Repos | `--text-tertiary` — 1,60:1 clair · 2,23:1 sombre | `--text-secondary` — 2,78:1 clair · 3,88:1 sombre |
+| Survol **ou** focus | `--text-primary` | inchangé |
+| Ouvert | `--text-primary` | inchangé |
+
+**Raison.** `globals.css` classe lui-même `--text-tertiary` comme « **non destiné à être lu** », et l'emploie pour les options écartées après réponse — c'est-à-dire pour du contenu dont on ne veut plus. Y peindre le seul accès à l'indice et à la théorie contredit `D-13` dans son intention même : « présente, silencieuse, ignorable sans coût » suppose qu'on puisse la voir avant de choisir de l'ignorer. À 1,60:1 sur un rendu réel, la colonne passive se lit comme vide.
+
+**Ce qui ne change pas :** la demande d'aide reste un acte délibéré — clic ou raccourci, jamais le survol — et le motif de mise en évidence reste couleur et graisse seules, sans fond ni bordure (`D-13`, `references/trade-republic-web.md` §5.2).
+
+**Ce que ça exclut :** un déclencheur en `--text-primary` au repos, qui en ferait un appel à l'action ; un fond, une bordure ou une icône pour le rendre visible ; l'emploi de `--text-tertiary` pour tout élément que l'utilisateur doit pouvoir **trouver**.
+
+---
+
+### D-48 — L'indice et l'explication s'écrivent à deux tons
+**Date :** 2026-07-31 · **Statut :** actif · **Choix de Mohamed** · **Étend :** `D-11` · **Impacte :** `05-composants.md`, `09-contenu.md`, `06-ecrans.md`
+
+`D-11` faisait de `TexteDeuxTons` la forme du retour après réponse. Il devient la forme de **tout** contenu de la colonne passive — indice, retour, notion.
+
+L'amorce en `--text-primary` porte l'idée phare et **se suffit à elle-même** ; la suite en `--text-secondary` développe. Un lecteur qui ne lit que le noir a déjà l'essentiel ; c'est le critère de recette, pas une intention.
+
+**Conséquence de rédaction, opposable.** Tout contenu passif se rédige en **deux fragments distincts dans le fichier source**, jamais en une phrase que le rendu découperait. Le contrat vit dans `09-contenu.md`.
+
+**Ce que ça exclut :** un indice d'un seul ton ; une amorce incompréhensible sans sa suite ; `--text-tertiary` en second ton (`05-composants.md` §6) ; un troisième ton.
+
+---
+
+### D-49 — Trois moments exclusifs, jamais deux contenus à la fois
+**Date :** 2026-07-31 · **Statut :** actif · **Choix de Mohamed** · **Révoque :** l'offre simultanée de `D-13` · **Impacte :** `02-interactions.md`, `06-ecrans.md`
+
+| Moment | Contenu | Disponibilité |
+|---|---|---|
+| Avant validation | Indice | Uniquement avant |
+| Après validation | Retour (`D-15`, `D-36`) | Uniquement après |
+| Troisième temps | Notion | `[À VALIDER]` — `Q-14` |
+
+Aujourd'hui l'indice et la notion sont offerts **en même temps**, par deux déclencheurs empilés. C'est fini : la colonne passive ne porte qu'un contenu, déterminé par **le moment de la boucle**, jamais par un choix de l'utilisateur.
+
+**Raison.** Deux portes ouvertes simultanément obligent à choisir avant de savoir ce qu'il y a derrière. C'est un coût de décision, et `D-09` interdit à cette colonne d'en porter un seul.
+
+**Ce que ça exclut :** un indice après validation ; un retour avant ; deux contenus empilés ; un moyen de revenir au contenu précédent — `Échap` n'a plus de pile à dépiler.
+
+⚠️ **Le passage du retour à la notion n'est pas tranché** (`Q-14`). Marqué `[À VALIDER]`, donc **non implémentable** : la V0 s'arrête au deuxième moment tant que rien n'est décidé.
+
+---
+
+### D-50 — Le contenu passif est appelé par la latence, plus par un déclencheur
+**Date :** 2026-07-31 · **Statut :** actif · `[PROPOSÉ]` · **Choix de Mohamed** · **Révoque :** `D-13`, `D-47` · **Amende :** `D-12` (Loi 5), `G4`, `D-28` · **Ouvre :** `Q-14`
+
+Les lignes cliquables `Indice` et `Voir la notion` disparaissent. Le composant `Declencheur` sort de la V0.
+
+| Étape | Ce qui se passe |
+|---|---|
+| Avant le seuil | Colonne passive au repos, sans contenu ni appel |
+| Au seuil — **10 s** `[P]` sans réponse | Un motif animé paraît au centre de la colonne (`D-51`) |
+| Au survol du motif | Le contenu du moment se révèle en `TexteDeuxTons` (`D-48`, `D-49`) |
+
+**Ce que ça coûte, écrit pour que personne ne le redécouvre en recette.** `D-13` justifiait le clic ainsi : « la demande d'aide doit rester un acte délibéré, parce que c'est le **signal qu'on veut mesurer** ». Ce signal-là disparaît, alors que `D-40` fait reposer l'évaluation de la V0 sur des sessions observées.
+
+**Ce qui le remplace vaut mieux, et c'est la raison d'accepter le coût.** Le seuil **est** une mesure : « a hésité plus de dix secondes » est un fait observable, là où « a cliqué sur Indice » mêlait l'hésitation, la curiosité et le hasard du curseur. Le signal change de nature ; `D-40` doit être relue à cette lumière, non contredite.
+
+**La Loi 5 est amendée, pas contournée.** `D-12` posait que le survol « ne porte jamais seul ». Il porte désormais seul, et `Q-14` en constate le prix au lieu de le taire.
+
+**`G4` est révoquée sur l'écran de question.** La colonne passive est vide avant le seuil, délibérément. Le vide devient l'état de repos — c'est lui qui donne son sens à l'apparition.
+
+**Ce que ça exclut :** tout élément cliquable pour dévoiler ; un libellé « Indice » ou « Théorie » ; une révélation avant le seuil ; un rappel de l'aide une fois le curseur reparti ; un second seuil — sauf si `Q-14` en décide autrement.
+
+---
+
+### D-51 — Un motif animé noir et blanc, tranché en `[PROPOSÉ]`
+**Date :** 2026-07-31 · **Statut :** actif · `[PROPOSÉ]` · **Choix de Mohamed** · **Débloque partiellement :** `07-motion.md` · **Impacte :** `04-tokens.md`, `05-composants.md`
+
+`Q-01` point 2 reste ouverte — aucune valeur de mouvement ne se déduit d'une image fixe. Le projet a déjà tranché deux fois dans cette situation plutôt qu'attendre (`D-34`, `D-39`). Il tranche une troisième.
+
+| Propriété | Règle |
+|---|---|
+| Palette | Noir et blanc seuls. Aucune couleur, `--marker-*` compris (`D-26`) |
+| Emplacement | Centré dans la colonne passive, horizontalement **et** verticalement |
+| Volume | Visible sans concurrencer l'énoncé — **jamais plus grand que le registre `--type-question`** |
+| Durée, courbe | La paire unique de `D-34`. Aucune valeur nouvelle |
+| Mouvement | Continu tant que le contenu n'est pas révélé ; s'arrête à la révélation |
+| Mouvement réduit | `D-34` : le motif **reste**, l'animation tombe. Il ne disparaît jamais |
+
+**Raison du noir et blanc.** `D-26` limite la couleur à un marqueur de justesse. Un motif animé coloré au centre de l'écran en ferait la chose la plus saillante de la page, au moment précis où l'attention doit rester sur l'énoncé.
+
+**Ce que ça exclut :** une couleur d'accent ; un compte à rebours visible, qui changerait l'attente en pression ; un motif qui subsiste après révélation ; une seconde paire durée/easing.
+
+⚠️ **Révision garantie à l'arrivée de `Q-01` point 2.** Choix Skilleo assumé, sans prétention à refléter la référence.
+
+---
+
 ## Questions ouvertes
 
 Ordre de priorité décroissante. Rien de bloqué par ces questions ne doit être implémenté.
@@ -885,6 +1023,53 @@ Ce qui manque encore, par ordre d'utilité :
 
 ---
 
+### Q-12 — `--text-secondary` ne franchit pas le seuil de texte
+**Ouverte par :** `D-47` · **Bloque :** la case « aucune information portée par la couleur seule / vérifié dans les deux thèmes » de `06-ecrans.md` §8
+
+Mesures : `--text-secondary` donne **2,78:1** en clair (#9B9B9B sur #FFFFFF) et **3,88:1** en sombre (#686A70 sur #000000). Le seuil applicable au texte courant est **4,5:1**. Les deux thèmes échouent, et cette couleur porte le repère de position, la progression, le corps des panneaux, et désormais les déclencheurs.
+
+**Ce n'est pas un effet de `D-47`**, qui fait passer le déclencheur de 1,60 à 2,78. C'est une dette antérieure que `D-47` rend visible.
+
+**La tension est réelle :** `--text-secondary` est `[MESURÉ]` sur la référence. L'assombrir, c'est s'écarter d'une valeur mesurée pour une raison qui n'a rien à voir avec la fidélité. Trois issues, aucune tranchée :
+
+1. assombrir la valeur appliquée et consigner l'écart à la mesure ;
+2. assumer l'échec et l'écrire, en acceptant qu'il figure dans tout audit ;
+3. séparer un ton **mesuré** (fidélité, documentation) d'un ton **appliqué** (lisibilité, code) — ce qui contredirait `D-27`, une valeur n'existant qu'une fois.
+
+**Rien ne s'implémente sur ce point avant arbitrage.**
+
+**Cas adjacent, à traiter dans le même mouvement :** le `Selecteur` (`05-composants.md` §9) emploie `--text-tertiary` pour sa valeur non retenue — c'est la bascule de thème du chrome permanent, où « Sombre » est aujourd'hui presque invisible. Même symptôme que celui corrigé par `D-47`, mais **pas le même statut** : ce motif-là est `[MESURÉ]` sur la référence, le déclencheur ne l'était pas. Le corriger, c'est s'écarter d'une mesure ; ne pas le corriger, c'est publier un contrôle qu'on ne voit pas. Non tranché.
+
+---
+### Q-13 — Le repère de position et `Progression` disent la même chose
+**Ouverte par :** la relecture du rendu · **Bloque :** l'écran de question
+
+Sur le rendu actuel, « Question 1 sur 2 » s'affiche **deux fois**, au mot près, dans la même typographie et la même couleur : à gauche comme repère de position (`06-ecrans.md` §2), à droite comme `Progression` (§4.1).
+
+**Aucun des deux documents n'a tort.** `06-ecrans.md` §2 place un repère de position en tête de la colonne décisionnelle ; `05-composants.md` §10 fait de `Progression` le « seul contenu permanent de la colonne passive ». Les deux règles sont écrites, elles n'ont simplement jamais été confrontées.
+
+Trois issues, aucune tranchée :
+
+1. **Le repère disparaît**, `Progression` reste le seul porteur — mais `06-ecrans.md` §2 place le repère en tête de séquence sur **tous** les gabarits, pas seulement celui-ci.
+2. **`Progression` disparaît de l'écran de question** — mais `05-composants.md` §10 la dit permanente, et `G4` s'appuie dessus pour que la colonne passive ne soit jamais vide.
+3. **Les deux restent et cessent de porter la même phrase** — ce qui suppose de dire ce que `Progression` affiche alors, et rien ne le dit aujourd'hui.
+
+**En attendant l'arbitrage, l'affichage en double reste.** Il est laid, il n'est pas faux : le corriger au jugé reviendrait à trancher en silence l'une des trois issues.
+
+---
+### Q-14 — Le trou clavier, tactile et sous 1024 px
+**Ouverte par :** `D-50` · **Bloque :** la case « parcours clavier complet » de `06-ecrans.md` §8, le régime `< 1024 px` de `D-28`, et le troisième moment de `D-49`
+
+Le survol n'existe ni au clavier, ni au doigt. Arbitrage rendu : **desktop à la souris seulement en V0.** Les conséquences sont écrites ici parce qu'elles ne doivent pas se découvrir en recette.
+
+1. Un utilisateur au clavier ne voit **aucun** indice et **aucune** explication. Ce n'est pas une dégradation, c'est une fonction absente.
+2. Sous 1024 px, `D-28` spécifie un panneau en surimpression qui n'a plus rien pour l'ouvrir. Le régime existe et ne mène nulle part : `D-28` est **partiellement révoquée de fait**.
+3. La checklist `06-ecrans.md` §8 affirme un parcours clavier complet. Tant que ce point n'est pas traité, **cette case ne peut pas être cochée** — et une doc qu'on ne peut pas honorer est ce que `README.md` règle 3 appelle un mensonge.
+4. Le passage du **retour à la notion** (`D-49`, troisième moment) n'a aucun mécanisme : le survol est déjà consommé par le deuxième. Marqué `[À VALIDER]`.
+
+**Une sortie à une ligne, proposée et non tranchée : le second palier.** Le motif paraît au premier seuil ; si aucun survol n'a lieu, le contenu se révèle **de lui-même** à un second. L'expérience souris décrite par `D-50` est inchangée au pixel près, et le clavier, le tactile et le régime étroit sont couverts sans rien ajouter à l'écran. Elle ne résout pas le point 4.
+
+---
 ### ~~Q-03~~ — Grammaire desktop : **résolue le 2026-07-30**
 
 Résolue en quatre temps : `D-09` (mise en page), `D-14`/`D-17`/`D-29` (grammaire clavier), `D-23` (surfaces secondaires), `D-39` (survol, focus, contour, raccourci de l'indice).

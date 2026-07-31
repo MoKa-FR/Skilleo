@@ -102,15 +102,15 @@ En V0, le chrome se limite donc à l'identité, à la progression et à cette ba
 **Un seul panneau à la fois.** La colonne passive n'affiche jamais deux contenus superposés.
 
 - Ouvrir un contenu depuis un autre le **remplace**, sans empiler de couche visuelle.
-- Le chemin de retour est mémorisé : `Échap` revient au contenu précédent, puis à l'état de repos.
-- L'état de repos de la colonne passive est défini par `D-13` : la ligne `Indice`, discrète.
+- ~~Le chemin de retour est mémorisé~~ : `D-49` supprime la pile, un seul contenu existe à la fois.
+- L'état de repos de la colonne passive est **vide** (`D-50`, qui révoque `G4`). Le `Motif` y paraît au seuil de latence.
 
 ### 4.3 Le panneau n'est pas modal
 
 Conséquence directe et importante : **l'utilisateur peut répondre à sa question sans fermer le panneau.** La théorie reste ouverte à côté pendant qu'il agit.
 
 - Aucun piège de focus. La colonne décisionnelle demeure atteignable au clavier.
-- Le focus entre dans le panneau à l'ouverture et **revient à son déclencheur** à la fermeture (`02-interactions.md` §4.3).
+- ~~Le focus entre dans le panneau et revient à son déclencheur~~ — `D-50` supprime le déclencheur. Le contenu se révèle au survol, sans déplacement de focus, ce dont `Q-14` porte le coût.
 - Aucun assombrissement de la colonne décisionnelle.
 
 ### 4.4 Ce qu'un panneau ne peut pas contenir
@@ -192,3 +192,4 @@ Deux destinations, trois panneaux. Aucune recherche, aucun index, aucun compte, 
 |---|---|
 | 2026-07-30 | Création. Cadré par D-02, D-09, D-10, D-13, D-16, D-22, D-23. Débloqué par D-23 qui résout Q-03 pt 4. |
 | 2026-07-30 | Amendement du §3 par `D-35` : la bascule de thème entre dans le chrome permanent, `Q-11` est résolue. |
+| 2026-07-31 | `D-49` et `D-50` : plus de déclencheur, plus de pile `Échap`, état de repos vide. §4.2 et §4.3 amendés. |

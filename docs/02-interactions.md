@@ -159,15 +159,17 @@ Les flèches déplacent une **mise en évidence**. Seule `Entrée` engage. La s�
 
 Pas de délai temporel : un délai est ressenti comme une latence, alors que la discipline `keydown`/`keyup` est invisible pour qui appuie normalement. `[À VALIDER en test]` que la garde soit imperceptible au rythme normal — si elle se sent, revoir la décision plutôt que la contourner.
 
-### 5.4 L'indice
+### 5.4 L'indice — **réécrit par `D-50`**
 
-Conformément à `D-13`, la ligne `Indice` de la colonne passive :
+`D-13` est révoquée : il n'y a plus de ligne `Indice`, plus de clic, plus de raccourci `I`.
 
-- est en `textTertiary` au repos ;
-- passe en `textPrimary` **au survol et au focus clavier** ;
-- se déclenche au clic **ou** par la touche `I`, affichée à côté de la ligne.
+- Avant **10 s** `[P]`, la colonne passive est vide.
+- Au seuil, un motif animé paraît, centré (`D-51`).
+- **Au survol du motif**, l'indice se révèle en `TexteDeuxTons` (`D-48`).
 
-Le survol seul **ne révèle pas** l'indice — il signale sa disponibilité. La demande d'aide reste un acte délibéré.
+Le survol **révèle** désormais, ce que la Loi 5 interdisait. `D-50` l'assume et `Q-14` en porte le prix : ni clavier, ni tactile, ni régime sous 1024 px.
+
+**Ce qui survit de `D-13` :** son raisonnement sur le signal mesuré. Le clic mesurait « a demandé de l'aide » ; le seuil mesure « a hésité plus de dix secondes » — un fait, là où le clic mêlait hésitation, curiosité et hasard du curseur.
 
 **Pourquoi `I` (`D-39`).** Une lettre nue est sans risque parce que `D-22` exclut tout champ de saisie libre : aucune frappe ne peut être destinée à autre chose. `I` n'entre en conflit ni avec les flèches, ni avec `Entrée`, ni avec `Échap`, ni avec `Tab`, n'est un raccourci navigateur sous aucun modificateur, occupe la même position physique en AZERTY et en QWERTY, et porte l'initiale du mot affiché.
 
@@ -209,3 +211,4 @@ Skilleo est desktop-first. Il recevra malgré tout des portables tactiles et des
 |---|---|
 | 2026-07-30 | Création. Cadré par D-12 à D-17. Intégralité du document en `[PROPOSÉ]` : la référence étant tactile, aucun état de pointeur n'y est observable. |
 | 2026-07-30 | `D-39` : le raccourci de l'indice est `I` (§5.4), et `Q-01` cesse de bloquer ce document. Le §7 est réduit à un seul point réellement ouvert. |
+| 2026-07-31 | `D-47` : la ligne `Indice` est en `textSecondary` au repos (§5.4). Le reste de `D-13` — survol, focus, raccourci `I`, acte délibéré — est inchangé. |

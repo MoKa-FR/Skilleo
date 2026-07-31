@@ -11,7 +11,9 @@ options:
     texte: Bonne option
     juste: true
 
-indice: Un second indice de démonstration.
+indice:
+  amorce: Un second indice de démonstration.
+  suite: Développement bref du second indice.
 
 retour:
   amorce: La bonne réponse était la seconde option.

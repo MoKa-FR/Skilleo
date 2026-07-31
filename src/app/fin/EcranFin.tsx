@@ -22,8 +22,9 @@ export function EcranFin({ questions }: { questions: { id: string; enonce: strin
   const ratees = questions.filter((q) => parQuestion.get(q.id) && !parQuestion.get(q.id)?.correct).length;
 
   return (
+    <div className="mx-auto flex w-full flex-1 flex-col" style={{ maxWidth: "var(--frame-max-width)" }}>
     <div className="grid flex-1 grid-cols-1 gap-y-[var(--space-8)] px-[var(--gutter)] py-[var(--space-8)] lg:gap-y-0" style={{ gridTemplateColumns: "var(--col-decision) var(--col-gap) var(--col-passive)" }}>
-      <div className="flex flex-col gap-[var(--space-6)] lg:col-start-1">
+      <div className="flex flex-col justify-center gap-[var(--space-6)] lg:col-start-1">
         <h1
           className="text-[length:var(--type-question-size)] leading-[var(--type-question-lh)] tracking-[var(--type-question-track)]"
           style={{ color: "var(--text-primary)", fontWeight: "var(--weight-bold)" }}
@@ -68,6 +69,7 @@ export function EcranFin({ questions }: { questions: { id: string; enonce: strin
           })}
         </ul>
       </div>
+    </div>
     </div>
   );
 }

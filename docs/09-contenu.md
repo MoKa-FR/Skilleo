@@ -203,12 +203,19 @@ retour:
 
 ### 4.3 Pourquoi l'indice est obligatoire
 
-`D-13` fait de l'indice un dispositif de premier rang, et `06-ecrans.md` G4 pose que la colonne
-passive n'est jamais vide : son état de repos **est** le déclencheur `Indice`. Une question sans
-indice laisserait donc un déclencheur inerte à l'écran, ou obligerait à le masquer — c'est-à-dire
-à ajouter un état à un écran qui en compte quatre.
+**L'argument a changé, la règle non.** Il reposait sur `G4` — la colonne passive n'est jamais
+vide, son repos **est** le déclencheur `Indice`. `D-50` a révoqué `G4` et supprimé le déclencheur.
 
-Le coût est reporté sur la rédaction, en connaissance de cause.
+La règle tient désormais par `D-49` et `D-51`, et elle tient plus fermement : passé le seuil de
+latence, le motif animé paraît et **promet un contenu**. Une question sans indice le ferait
+révéler du vide — une promesse rompue au moment exact où l'utilisateur bloque. Pire que
+l'ancien déclencheur inerte, qui ne promettait rien tant qu'on ne le cliquait pas.
+
+Le coût reste reporté sur la rédaction, en connaissance de cause.
+
+**Conséquence de `D-48`, opposable :** l'indice s'écrit en **deux fragments** — une amorce qui se
+suffit à elle-même, puis son développement. Un indice rédigé d'un seul tenant n'est pas
+recevable.
 
 ---
 
@@ -570,3 +577,4 @@ débutants.
 |---|---|
 | 2026-07-30 | Création. Rendu possible par `D-36` (retour unique) et `D-37` (notion partagée), contraint par `D-30` (projection en tables) et `D-32` (séquence fixe). Ouvre `D-38` sur le partage YAML/MDX. |
 | 2026-07-30 | Enrichi depuis une session de production menée hors dépôt, arbitrée en `D-41` à `D-44`. Ajouts : le module source comme quatrième unité et niveau 0 non publié (§2.1, §6bis), le champ `source` sur les questions et les notions, la charte de style opposable (§7bis), la fidélité factuelle (§7ter), la progression pédagogique et le fil conducteur (§7quater), la passe mécanique à cinq compteurs (§10.1). Correction : l'exemple de notion du §5 employait du gras, que la charte exclut. |
+| 2026-07-31 | `D-48` : tout contenu passif s'écrit en deux fragments. §4.3 conserve l'obligation d'indice mais en change la justification — `G4` est révoquée par `D-50`, c'est désormais la promesse du motif qui la fonde. |

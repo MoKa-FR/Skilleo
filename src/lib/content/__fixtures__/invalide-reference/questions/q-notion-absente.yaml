@@ -11,7 +11,9 @@ options:
   - id: b
     texte: Seconde option
 
-indice: Un indice quelconque.
+indice:
+  amorce: Un indice quelconque.
+  suite: Une suite quelconque d'indice.
 
 retour:
   amorce: Une amorce quelconque.

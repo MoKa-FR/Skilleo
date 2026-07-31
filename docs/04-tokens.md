@@ -65,9 +65,11 @@ Chaque token porte un marqueur dans `tokens.css` :
 | Token | Rôle | Employé pour |
 |---|---|---|
 | `--text-secondary` | Contenu qu'on **veut** faire lire | La suite grise d'un paragraphe à deux tons |
-| `--text-tertiary` | État inactif qu'on ne veut **pas** faire lire | Option non retenue, ligne `Indice` au repos |
+| `--text-tertiary` | État inactif qu'on ne veut **pas** faire lire | Option écartée après validation, valeur non retenue d'un `Selecteur` |
 
 Les employer l'un pour l'autre détruit la hiérarchie. C'est l'erreur la plus facile à commettre du système.
+
+**Le critère de départage est l'intention, pas la discrétion.** `--text-tertiary` dit « ce contenu ne vous sert plus » ; il ne dit pas « ce contenu est secondaire ». Un élément que l'utilisateur doit pouvoir **trouver** n'y a donc pas sa place, si discret soit son rôle — c'est ce qui a fait sortir la ligne `Indice` de ce token (`D-47`).
 
 **3. Le thème sombre n'est pas une inversion.** Les deux gris secondaires sont des choix distincts, chacun calibré pour son fond. Générer le thème sombre en inversant les valeurs du clair donnerait un résultat faux. Les deux palettes ont été observées séparément sur les intrants.
 
@@ -130,13 +132,17 @@ Toute valeur numérique qui change sur place — compteur de progression, score 
 
 ## 4. Espacement et colonnes
 
-### 4.1 La gouttière est minuscule, et c'est contre-intuitif
+### 4.1 La gouttière est minuscule, et le cadre est plafonné
 
-`--gutter` représente **1,1 % de la largeur du viewport de référence**. Le contenu touche presque le bord de l'écran.
+`--gutter` a été mesuré **en relatif** — une fraction de la largeur du viewport de référence. Le contenu touche presque le bord de l'écran.
 
-C'est l'inverse de l'intuition, et l'inverse de ce que prétendait le rapport de ChatGPT, qui décrivait des « marges latérales inhabituellement généreuses ». Sur mobile, c'est probablement vrai. **Sur desktop, la référence fait du plein cadre.** La respiration ne vient pas des marges : elle vient du découpage en colonnes et du vide vertical.
+C'est l'inverse de l'intuition, et l'inverse de ce que prétendait le rapport de ChatGPT, qui décrivait des « marges latérales inhabituellement généreuses ». Sur mobile, c'est probablement vrai. **Sur desktop, la référence fait du plein cadre.** La respiration ne vient pas des marges : elle vient du découpage en colonnes et de la distribution verticale (§4.4).
 
-Quiconque trouve la gouttière trop serrée doit relire cette section avant de l'augmenter.
+**Mais un ratio figé en absolu cesse d'être ce ratio dès qu'on change de largeur.** `--gutter` est déclaré en pixels : il ne vaut la fraction mesurée qu'à la largeur de référence, et se dilue sur tout écran plus large. `D-45` lève la contradiction sans toucher au token — les colonnes s'appliquent désormais à un **cadre plafonné et centré**, dont la largeur maximale est celle du viewport de référence normalisé. Au plafond, la gouttière retrouve exactement la fraction mesurée.
+
+**Le plein cadre n'est donc pas abandonné, il est borné.** Sous le plafond, rien ne change.
+
+Quiconque trouve la gouttière trop serrée doit relire cette section avant de l'augmenter : quand un écran paraît vide, la cause est presque toujours verticale (§4.4), rarement latérale.
 
 ### 4.2 L'échelle
 
@@ -147,6 +153,18 @@ Deux valeurs seulement sont mesurées : la gouttière et la marge de paragraphe.
 `[M]` sur la référence : les deux colonnes ne sont **ni de largeur égale, ni jointives**. Un vide franc les sépare.
 
 Skilleo **inverse les rôles** par rapport à la référence : chez elle la colonne large porte le texte, chez nous elle porte la décision (`D-10`, la décisionnelle est à gauche).
+
+Les trois largeurs sont des **pourcentages**, et depuis `D-45` elles se rapportent au cadre plafonné, non au viewport. Le vide franc qui sépare les deux colonnes est donc borné lui aussi.
+
+### 4.4 La distribution verticale
+
+Cette section a manqué au projet jusqu'à `D-46`, et son absence a produit un écran dont plus de la moitié de la hauteur était morte. Le §4.1 promettait une respiration par le vide vertical sans jamais dire **comment ce vide se répartit** ; faute de règle, il s'est accumulé en bas.
+
+**Le vide vertical est réparti, jamais accumulé.** Le bloc décisionnel est centré dans la hauteur disponible sous le chrome permanent (`D-46`). La colonne passive partage son bord supérieur et s'écoule vers le bas — rien n'est ancré au bas de la fenêtre.
+
+**Le centrage impose une hauteur constante, et c'est la partie contraignante.** Un bloc centré dont le contenu grandit déplace tout ce qu'il contient, à commencer par l'énoncé — ce qu'interdit `G3` (`06-ecrans.md`). Tout élément **conditionnel** de la colonne décisionnelle occupe donc un emplacement à hauteur réservée, présent et vide tant qu'il ne s'affiche pas.
+
+Ce n'est pas un détail d'implémentation : un composant conditionnel sans réserve de hauteur ne peut pas vivre dans la colonne décisionnelle. Le vérifier appartient à la conception, pas à la relecture de code.
 
 ---
 
@@ -216,18 +234,23 @@ Aucune valeur de mouvement n'est déductible d'une image fixe : `Q-01` reste ouv
 | Ombres | Aucune nécessaire (§7) |
 | Durées, courbes | Une paire `[P]` arrêtée par `D-34` — le reste attend `Q-01` |
 | Palette sombre hors texte | `--surface-subtle` et `--text-tertiary` extrapolés |
+| Distribution verticale | Comblée par `D-46`. Aucun rythme vertical n'est mesurable sur des captures dont on ignore la hauteur de fenêtre — choix Skilleo assumé |
+| Largeur maximale du cadre | `D-45`, déduite du viewport de référence normalisé et non mesurée comme telle |
 
 ### 10.2 Marqué `[AV]` — ne pas implémenter
 
 | Sujet | Ce qui manque |
 |---|---|
 | **Police** | Non identifiée sur les intrants |
+| **Contraste de `--text-secondary`** | `Q-12` — la valeur mesurée ne franchit pas le seuil du texte, dans aucun des deux thèmes. Ne rien modifier avant arbitrage |
 
 Le marqueur sémantique en est sorti : `D-33` l'a arrêté.
 
 ### 10.3 Conditionne tout le reste
 
 `Q-01` point 4 — confirmation de la largeur de fenêtre et de la densité d'écran des captures. Tant qu'elle manque, chaque valeur en px reste suspendue à une déduction.
+
+Depuis `D-45`, la **largeur maximale du cadre** en dépend au même titre : elle est calée sur le viewport de référence normalisé. Si la normalisation tombe, le plafond bouge du même facteur constant que le reste — il ne crée pas une incertitude nouvelle, il en hérite une.
 
 ---
 
@@ -238,4 +261,5 @@ Le marqueur sémantique en est sorti : `D-33` l'a arrêté.
 | 2026-07-30 | Création. Deux palettes mesurées séparément (`D-24`). Échelle à deux régimes d'interligne. Rayon de référence unique. Aucune ombre. |
 | 2026-07-30 | `--h-control` ajouté (`D-25`), arrêté sur maquette comparative 44/48/52. |
 | 2026-07-30 | **Réécriture selon `D-27` : toutes les valeurs chiffrées sont retirées** et vivent désormais dans `tokens/tokens.css`, canonique. Ce document ne garde que le raisonnement et les règles. Marqueur sémantique limité à une icône (`D-26`). |
+| 2026-07-31 | `D-45` : §4.1 réécrit — le plein cadre est **borné**, les pourcentages de colonnes se rapportent à un cadre plafonné et centré, ce qui réconcilie `--gutter` avec sa mesure relative. `D-46` : **§4.4 créé**, la distribution verticale n'avait jamais été spécifiée. `D-47` ouvre `Q-12` (§10.2). |
 | 2026-07-30 | `D-33` arrête le marqueur sémantique — une seule paire pour les deux thèmes, §2.2 et §10.2 réécrits. `D-34` ouvre le §9 : une paire durée/easing, `Q-01` reste ouverte pour le reste. |

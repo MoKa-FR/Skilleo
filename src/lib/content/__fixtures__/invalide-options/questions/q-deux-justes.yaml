@@ -12,7 +12,9 @@ options:
     texte: Seconde option
     juste: true
 
-indice: Un indice quelconque.
+indice:
+  amorce: Un indice quelconque.
+  suite: Une suite quelconque d'indice.
 
 retour:
   amorce: Une amorce quelconque.

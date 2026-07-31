@@ -11,7 +11,9 @@ options:
   - id: b
     texte: Seconde option
 
-indice: Un indice de démonstration, une seule phrase.
+indice:
+  amorce: Un indice de démonstration.
+  suite: Développement bref de l'indice, pour la démonstration.
 
 retour:
   amorce: La bonne réponse était la première option.

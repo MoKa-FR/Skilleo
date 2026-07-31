@@ -101,6 +101,11 @@
 
   --gutter:    1rem;      /* 16px  [M] 1,1 % du viewport — plein cadre      */
 
+  /* D-45 : le cadre est plafonné, puis centré. Le plafond est le viewport de
+     référence normalisé — 1469px CSS [D], Q-01 pt 4 — au-delà duquel
+     --gutter retrouve exactement sa fraction mesurée. */
+  --frame-max-width: 91.8125rem; /* 1469px [D] */
+
   /* Colonnes (D-09, D-10). La décisionnelle est à gauche. */
   --col-decision: 47%;    /* [P]                                            */
   --col-gap:      15%;    /* [M] les colonnes ne se touchent pas            */
@@ -145,6 +150,14 @@
      se déduit pas d'une image fixe. Une seconde durée est un défaut.        */
   --motion-duration: 150ms;                        /* [P]                   */
   --motion-easing:   cubic-bezier(0.2, 0, 0, 1);   /* [P] sortie décélérée  */
+
+  /* ------------------------------------------------------------------ Motif
+     D-50, D-51 : signe animé de la colonne passive, noir et blanc seul.
+     Aucune paire durée/easing propre — la boucle réutilise --motion-duration
+     en alternance infinie, ce qui satisfait "aucune valeur nouvelle" tout en
+     donnant un mouvement continu.                                          */
+  --motif-delay: 10000ms;                       /* [P] seuil de latence D-50 */
+  --motif-size:  var(--type-question-size);     /* [P] jamais plus grand    */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -181,6 +194,23 @@
 
 .tabular {
   font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ==========================================================================
+   Motif — 05-composants.md §7 (D-51). Trois points, noir et blanc, pulsant
+   en boucle avec la seule paire durée/easing du système : chaque cycle dure
+   exactement --motion-duration, répété en alternance à l'infini plutôt que
+   d'introduire une durée d'animation nouvelle. Sous prefers-reduced-motion,
+   --motion-duration tombe à 1ms : le motif reste visible, immobile.
+   ========================================================================== */
+
+@keyframes motif-pulse {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+
+.motif-point {
+  animation: motif-pulse var(--motion-duration) var(--motion-easing) infinite alternate;
 }
 
 /* ==========================================================================

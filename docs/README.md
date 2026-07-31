@@ -19,7 +19,7 @@ Ces documents sont **normatifs** : en cas de désaccord entre le code et la doc,
 | [`04-tokens.md`](./04-tokens.md) | Pourquoi ces valeurs, et sous quelles règles les employer | 🟢 rédigé |
 | [`05-composants.md`](./05-composants.md) | Catalogue des composants, états, contrats comportementaux | 🟢 rédigé |
 | [`06-ecrans.md`](./06-ecrans.md) | Gabarits d'écran, ordre du contenu, états transverses | 🟢 rédigé |
-| `07-motion.md` | Durées, easings, transitions, réduction du mouvement | ⚪ non commencé — la V0 s'en passe : `D-34` tient en deux tokens |
+| `07-motion.md` | Durées, easings, transitions, réduction du mouvement | 🟠 **à ouvrir** — `D-51` introduit un motif animé en V0. `D-34` ne suffit plus seul |
 | `08-conventions-code.md` | Organisation des dossiers, nommage, règles de dépendance | ⚪ non commencé |
 | [`09-contenu.md`](./09-contenu.md) | Contrat de contenu : unités, fichiers, champs, validation | 🟢 rédigé |
 | `10-architecture.md` | Modèle d'état, persistance, frontière client/serveur | ⚪ non commencé |
@@ -57,23 +57,32 @@ sans avoir à parcourir le journal.
 |---|---|---|
 | `00-produit.md` | `D-01` `D-02` `D-03` `D-08` `D-21` `D-22` | — |
 | `01-ux-principes.md` | `D-12` | — |
-| `02-interactions.md` | `D-12` `D-13` `D-14` `D-15` `D-17` `D-39` | — |
-| `03-navigation.md` | `D-09` `D-16` `D-21` `D-22` `D-23` `D-35` | — |
-| `04-tokens.md` | `D-04` `D-11` `D-24` `D-25` `D-26` `D-27` `D-28` `D-33` `D-34` `D-39` | — |
-| `05-composants.md` | `D-11` `D-12` `D-14` `D-16` `D-23` `D-24` `D-26` `D-28` `D-29` `D-39` | — |
-| `06-ecrans.md` | `D-08` `D-09` `D-10` `D-13` `D-14` `D-15` `D-21` `D-22` `D-23` `D-26` `D-28` `D-29` `D-31` `D-35` `D-36` `D-40` | — |
-| `07-motion.md` | `D-34` | `Q-01` |
+| `02-interactions.md` | `D-12` `D-14` `D-15` `D-17` `D-39` `D-49` `D-50` | `Q-14` |
+| `03-navigation.md` | `D-09` `D-16` `D-21` `D-22` `D-23` `D-35` `D-49` `D-50` | — |
+| `04-tokens.md` | `D-04` `D-11` `D-24` `D-25` `D-26` `D-27` `D-28` `D-33` `D-34` `D-39` `D-45` `D-46` `D-51` | `Q-12` |
+| `05-composants.md` | `D-11` `D-12` `D-14` `D-16` `D-23` `D-24` `D-26` `D-28` `D-29` `D-39` `D-48` `D-50` `D-51` | `Q-12` `Q-14` |
+| `06-ecrans.md` | `D-08` `D-09` `D-10` `D-14` `D-15` `D-21` `D-22` `D-23` `D-26` `D-28` `D-29` `D-31` `D-35` `D-36` `D-40` `D-45` `D-46` `D-48` `D-49` `D-50` | `Q-13` `Q-14` |
+| `07-motion.md` | `D-34` `D-51` | `Q-01` point 2 |
 | `08-conventions-code.md` | `D-04` `D-20` `D-27` `D-38` | — |
-| `09-contenu.md` | `D-13` `D-16` `D-20` `D-30` `D-32` `D-36` `D-37` `D-38` `D-41` `D-42` `D-43` `D-44` | — |
+| `09-contenu.md` | `D-16` `D-20` `D-30` `D-32` `D-36` `D-37` `D-38` `D-41` `D-42` `D-43` `D-44` `D-48` | — |
 | `10-architecture.md` | `D-04` `D-08` `D-22` `D-30` `D-31` `D-32` `D-40` | — |
 
 Les décisions transversales `D-05` `D-06` `D-07` `D-18` `D-19` portent sur le projet
 et la documentation eux-mêmes, pas sur un document en particulier.
 
-**`Q-01` ne bloque plus que `07-motion.md`.** `D-33`, `D-34` et `D-39` ont tranché en `[PROPOSÉ]`
-assumé plutôt que d'attendre les intrants. Leur arrivée déclenchera une **révision** de ces trois
-décisions, pas une réécriture : les valeurs concernées sont localisées dans `tokens/tokens.css` et
-dans deux tableaux d'états.
+**`Q-01` ne bloque plus que `07-motion.md`.** `D-33`, `D-34`, `D-39` et désormais `D-51` ont tranché
+en `[PROPOSÉ]` assumé plutôt que d'attendre les intrants. Leur arrivée déclenchera une **révision**
+de ces quatre décisions, pas une réécriture : les valeurs concernées sont localisées dans
+`src/app/globals.css` et dans quelques tableaux d'états.
+
+**Quatre questions ouvertes bloquent du code au 31 juillet 2026.** `Q-12` (contraste de
+`--text-secondary`), `Q-13` (le compteur affiché deux fois), `Q-14` (le survol porte seul : ni
+clavier, ni tactile, ni régime sous 1024 px) et le troisième moment de `D-49`, marqué `[À VALIDER]`.
+Aucun ne s'implémente.
+
+⚠️ **`D-13` est révoquée** par `D-50`, et `D-47` est caduque le jour de sa rédaction. Les deux sont
+conservées : la première pour son raisonnement sur le signal mesuré, la seconde parce que `Q-12`
+en est sortie.
 
 **La charte de style de `09-contenu.md` §7bis ne s'applique pas à `docs/`.** `D-42` exempte la
 documentation explicitement. Ne pas réécrire ces onze documents au nom de la charte.

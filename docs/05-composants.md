@@ -13,7 +13,7 @@
 - [4. `GroupeOptions` et `Option`](#4-groupeoptions-et-option)
 - [5. `Bouton`](#5-bouton)
 - [6. `TexteDeuxTons`](#6-textedeuxtons)
-- [7. `Declencheur`](#7-declencheur)
+- [7. ~~`Declencheur`~~ → `Motif`](#7-declencheur--motif)
 - [8. `PanneauPassif`](#8-panneaupassif)
 - [9. `Selecteur`](#9-selecteur)
 - [10. `Progression`](#10-progression)
@@ -163,28 +163,41 @@ On lit le premier ton seul pour le résumé, les deux pour le détail. Divulgati
 - La distinction est **visuelle uniquement** et ne porte jamais d'information à elle seule (`01-ux-principes.md` §8). Un utilisateur qui ne perçoit pas le contraste lit une phrase complète et correcte.
 - **Aucun changement de graisse.** Le regard doit accrocher un contraste de valeur, pas d'épaisseur — ajouter du gras casserait l'effet (`04-tokens.md` §3.4).
 
+**Étendu par `D-48` :** ce composant n'est plus réservé au retour. Il est la forme de **tout** contenu de la colonne passive — indice, retour, notion. Conséquence de rédaction opposable : chaque contenu passif s'écrit en **deux fragments distincts dans le fichier source**, jamais en une phrase que le rendu découperait (`09-contenu.md`).
+
 **Interdits :** plus de deux tons ; une amorce qui ne se suffit pas à elle-même ; l'emploi de `--text-tertiary` comme second ton, qui signifierait « ne lisez pas ».
 
 ---
 
-## 7. `Declencheur`
+## 7. ~~`Declencheur`~~ → `Motif`
 
-La ligne discrète qui ouvre un panneau. Son cas de référence est la ligne `Indice` (`D-13`).
+**`Declencheur` est révoqué par `D-50`** et sort de la V0. La ligne cliquable `Indice` n'existe plus. Le raisonnement qui l'avait fait naître — la demande d'aide comme acte délibéré et mesurable — est conservé dans `D-13`, dont `D-50` explique ce qui le remplace.
 
-| État | Rendu |
+Ce qui prend sa place n'est pas un contrôle mais un **signe** : il n'a pas de libellé, il n'annonce rien, il ne se clique pas.
+
+### `Motif` — le bloc animé de la colonne passive
+
+| Propriété | Valeur |
 |---|---|
-| Repos | `--text-tertiary` — présent, silencieux, ignorable sans coût |
-| Survol | `--text-primary` |
-| Focus visible | `--text-primary` + anneau |
-| Ouvert | `--text-primary`, marqué comme actif |
+| Interactif | **Non.** Aucun clic, aucun focus, aucun libellé |
+| Apparition | Au seuil de latence, `10 s` `[P]` sans réponse (`D-50`) |
+| Emplacement | Centré dans la colonne passive, horizontalement **et** verticalement |
+| Palette | Noir et blanc seuls (`D-51`) |
+| Volume | Jamais plus grand que le registre `--type-question` |
+| Animation | Continue jusqu'à la révélation, puis arrêtée |
+| Mouvement réduit | Le motif **reste**, l'animation tombe (`D-34`) |
 
 **Contrat.**
 
-- **Le survol ne déclenche pas** — il signale la disponibilité. L'ouverture demande un clic ou un raccourci (`D-12`, Loi 5).
-- Découvrable au repos : `--text-tertiary` est discret, **pas invisible**. Un déclencheur qu'on ne voit pas est une fonction qui n'existe pas.
-- Atteignable au clavier, toujours.
+- **Le survol révèle le contenu du moment** (`D-49`) — indice avant validation, retour après. Le composant ne choisit pas ce qu'il montre, l'écran le lui donne.
+- **Il ne dit pas ce qu'il cache.** Un libellé transformerait le signe en bouton, et rétablirait le coût de décision que `D-50` supprime.
+- **Il ne réapparaît pas** une fois le contenu révélé et le curseur reparti.
 
-**Pourquoi ce composant existe.** Il matérialise la Loi 5. Une révélation au survol seul aurait quatre défauts : découvrabilité nulle, aucun équivalent clavier, aucun équivalent tactile, et révélation accidentelle au passage du curseur. Ce dernier point est le plus important : dans une application d'apprentissage, la demande d'aide doit rester un **acte délibéré**, parce que c'est le signal qu'on veut mesurer.
+**Pourquoi il n'a pas de libellé.** Un mot — « Indice », « Aide » — oblige à décider s'il vaut la peine d'être suivi, au moment précis où l'utilisateur est déjà en train d'hésiter sur la question. Le motif ne demande rien : il signale qu'il y a quelque chose, et le survol coûte moins qu'une décision.
+
+⚠️ **`Q-14` :** sans souris, ce composant est inerte. Ni clavier, ni tactile, ni régime sous 1024 px.
+
+**Interdits :** un libellé, une icône signifiante, une couleur, un compte à rebours, un fond, une bordure ; une réapparition périodique ; une taille qui concurrence l'énoncé.
 
 ---
 
@@ -204,10 +217,9 @@ Le conteneur de la colonne passive (`D-09`, `D-23`).
 
 - **Pas modal, donc l'utilisateur peut répondre sans le fermer.** La théorie reste ouverte à côté pendant qu'il agit. C'est le cœur de « la théorie est en support » (`D-02`).
 - Aucun piège de focus. La colonne décisionnelle reste atteignable au clavier.
-- Le focus entre à l'ouverture et **revient à son déclencheur** à la fermeture.
-- `Échap` revient au contenu précédent, puis à l'état de repos. **Il ne détruit jamais l'état de la question.**
-- Ouvrir un contenu depuis un autre le **remplace**, sans empiler de couche visuelle.
-- État de repos : le `Declencheur` `Indice`, plus la progression.
+- ~~Le focus entre à l'ouverture et revient à son déclencheur~~ — `D-50` supprime le déclencheur, et la révélation au survol ne déplace aucun focus.
+- ~~`Échap` revient au contenu précédent~~ — `D-49` supprime la pile : un seul contenu existe, imposé par le moment.
+- **État de repos : vide**, hors progression (`D-50` révoque `G4`). Puis le `Motif` au seuil de latence.
 
 **Interdits (R6) :** toute action P0 ou P1 à l'intérieur. Un panneau qui contiendrait un bouton d'avancement serait un défaut — l'avancement est P0 et appartient à la colonne décisionnelle.
 
@@ -305,7 +317,9 @@ Le **seul** endroit du système où la couleur apparaît (`D-26`).
 
 | Réf | Sujet |
 |---|---|
-| `D-13` | Le raccourci clavier du `Declencheur` `Indice` |
+| ~~`D-13`~~ | ~~Raccourci clavier du `Declencheur`~~ — sans objet, `D-50` supprime le composant |
+| `Q-14` | Le `Motif` est inerte sans souris : ni clavier, ni tactile, ni régime sous 1024 px |
+| `D-49` | Comment on atteint la notion, troisième moment — `[À VALIDER]` |
 | `D-17` | Validation en test réel de la garde `keyup` du `Bouton` primaire |
 | `D-34` | Quelles transitions existent — la paire durée/easing est arrêtée, leur emploi ne l'est pas |
 | `D-28` | Largeur des cibles en régime étroit — la hauteur est couverte par `D-25` |
@@ -318,3 +332,5 @@ Le **seul** endroit du système où la couleur apparaît (`D-26`).
 |---|---|
 | 2026-07-30 | Création. Débloqué par `D-25` (hauteur de contrôle). Neuf composants, quatre emplacements réservés. Cadré par D-08 à D-27. |
 | 2026-07-30 | `Marqueur` sort de `[AV]` (`D-33`) : valeurs arrêtées, identiques dans les deux thèmes, le contrat « jamais du texte » étant ce qui le permet. |
+| 2026-07-31 | `D-47` : le `Declencheur` au repos passe en `--text-secondary` (§7). À `--text-tertiary` la règle « discret, pas invisible » n'était pas tenue — 1,60:1 sur un rendu réel. Ouvre `Q-12`, qui couvre aussi le `Selecteur` (§9). |
+| 2026-07-31 | `D-50` révoque `Declencheur` ; le §7 devient `Motif`, non interactif, révélé au survol. `D-48` étend `TexteDeuxTons` à tout contenu passif. `D-47`, écrit le matin même, est caduc. Ouvre `Q-14`. |

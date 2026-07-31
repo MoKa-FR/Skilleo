@@ -31,7 +31,9 @@ Un gabarit dit **ce qui occupe chaque colonne, dans quel ordre, et comment ça c
 
 **G3 — L'énoncé ne se décale jamais.** Tout ce qui apparaît en cours de question va dans la colonne passive. C'est la raison d'être de `D-09`.
 
-**G4 — La colonne passive n'est jamais vide.** Son état de repos est défini : le déclencheur `Indice` et la progression (`D-13`).
+**~~G4 — La colonne passive n'est jamais vide.~~ Révoquée par `D-50`.** La colonne passive **est** vide avant le seuil de latence, délibérément. Le vide est son état de repos, et c'est lui qui donne son sens à l'apparition du motif.
+
+Ce qui reste vrai de `G4` : une colonne dont le contenu existe mais ne se voit pas est vide en pratique. La règle ne portait pas sur le vide, elle portait sur le **mensonge** d'un contenu présent et illisible.
 
 ---
 
@@ -53,6 +55,20 @@ COLONNE DÉCISIONNELLE (gauche)     │  COLONNE PASSIVE (droite)
 
 Le repère de position est en `--type-micro`, `--text-secondary`. Il informe, il ne décore pas.
 
+### 2.1 Comment cette séquence occupe la hauteur
+
+`D-46` : le bloc décisionnel — points 1 à 5 ci-dessus — est **centré verticalement dans la hauteur disponible sous le chrome**. La colonne passive partage son bord supérieur et s'écoule vers le bas. La progression reste le dernier élément de ce flux ; elle n'est jamais ancrée au bas de la fenêtre.
+
+**Le centrage est conditionné par `G3`.** Un bloc centré dont la hauteur varie déplace l'énoncé. Donc, sur un écran donné, **la hauteur de la colonne décisionnelle ne varie pas d'un état à l'autre** : tout élément conditionnel y occupe un emplacement à hauteur réservée. Un écran qui ne peut pas tenir cette promesse renonce au centrage, pas à `G3`.
+
+**Débordement.** Si le bloc dépasse la hauteur disponible, il s'aligne en haut et la page défile. Jamais de troncature, jamais de bloc centré qui déborde des deux côtés.
+
+### 2.2 Comment cette séquence occupe la largeur
+
+`D-45` : les colonnes se répartissent un **cadre plafonné en largeur et centré**, non le viewport. Sous le plafond le comportement est inchangé — plein cadre, gouttière fine. Au-delà, le cadre cesse de croître et le surplus se répartit également de part et d'autre.
+
+Les seuils de `D-28` continuent de se lire sur le **viewport**. Le plafond n'est pas un quatrième régime.
+
 ---
 
 ## 3. Régimes de largeur
@@ -61,7 +77,7 @@ Le repère de position est en `--type-micro`, `--text-secondary`. Il informe, il
 
 | Largeur | Ce qui change |
 |---|---|
-| ≥ 1280 px | Disposition nominale |
+| ≥ 1280 px | Disposition nominale. Au-delà du plafond de `D-45`, le cadre est centré et cesse de s'élargir |
 | 1024–1279 px | Gouttière et colonne passive resserrées. Aucun contenu ne disparaît |
 | < 1024 px | Colonne unique. La colonne passive devient un panneau **en surimpression**, ancré en bas. La progression migre sous l'en-tête |
 
@@ -79,20 +95,25 @@ La destination par défaut. L'utilisateur y arrive directement, sans écran d'ac
 
 | Colonne décisionnelle | Colonne passive |
 |---|---|
-| Repère `Question n sur N` | Déclencheur `Indice` |
-| `Enonce` | Déclencheur `Voir la notion` |
-| `GroupeOptions` | `Progression` |
-| Action primaire | |
+| Repère `Question n sur N` | Rien avant le seuil de latence |
+| `Enonce` | Puis le motif animé (`D-51`) |
+| `GroupeOptions` | Au survol : le contenu du moment en `TexteDeuxTons` |
+| Action primaire | `Progression` |
+
+**Les déclencheurs ont disparu** (`D-50`). Le contenu passif n'est plus choisi par l'utilisateur mais déterminé par le **moment de la boucle** (`D-49`) : indice avant validation, retour après. Jamais les deux.
 
 ### 4.2 Les quatre états
 
 **A — Question posée, rien sélectionné**
 
-- Décisionnelle : repère, énoncé, options au repos, action primaire présente.
-- Passive : état de repos — les deux déclencheurs en `--text-tertiary`, la progression.
+- Décisionnelle : repère, énoncé, options au repos, action primaire présente, **emplacement de retour local réservé et vide**.
+- Passive : **vide**, hors progression. Aucun appel, aucun libellé (`D-50`).
+- Au-delà de **10 s** sans réponse : le motif animé paraît, centré (`D-51`). Au survol, l'indice se révèle en `TexteDeuxTons`.
 - Focus initial : le `GroupeOptions`.
 
 L'action primaire est **présente dès le départ**, jamais masquée ni désactivée (`D-29`). Son emploi sans sélection produit un **retour local** pointant le groupe d'options — pas un état désactivé, pas un message global (`05-composants.md` §2).
+
+**L'emplacement de ce retour local est réservé dès l'état A**, vide et sans hauteur variable. C'est ce qui rend le centrage vertical de `D-46` compatible avec `G3` : l'apparition du message ne déplace pas l'énoncé.
 
 **B — Option sélectionnée, non validée**
 
@@ -100,12 +121,11 @@ L'action primaire est **présente dès le départ**, jamais masquée ni désacti
 - L'action primaire porte `Valider`.
 - **Rien d'autre ne change.** Aucun contenu n'apparaît, la sélection n'est pas une réponse.
 
-**C — Un panneau est ouvert**
+**C — Un contenu passif est révélé**
 
 - Décisionnelle : **inchangée**. L'utilisateur peut sélectionner et valider sans fermer le panneau (`D-23`).
-- Passive : le panneau remplace l'état de repos. Un seul à la fois.
-- Le déclencheur employé passe en état ouvert.
-- `Échap` revient au contenu précédent, puis au repos. Il ne détruit jamais la sélection en cours.
+- Passive : le contenu remplace le motif. **Un seul, déterminé par le moment** (`D-49`) — l'utilisateur ne choisit pas.
+- ~~`Échap` revient au contenu précédent~~ : `D-49` supprime la pile, il n'y a plus rien à dépiler.
 
 **D — Réponse validée**
 
@@ -124,6 +144,8 @@ L'action primaire est **présente dès le départ**, jamais masquée ni désacti
 - Une célébration à chaque bonne réponse (`01-ux-principes.md` §5).
 - Un enchaînement automatique vers la question suivante (`D-15`).
 - Une action d'avancement dans la colonne passive (`D-09`).
+- **Tout élément cliquable destiné à dévoiler un contenu** (`D-50`), y compris un libellé « Indice » ou « Théorie ».
+- Un compte à rebours visible, qui changerait l'attente en pression (`D-51`).
 
 ---
 
@@ -235,15 +257,20 @@ Tout écran respecte `prefers-reduced-motion` : `D-34` fait tomber `--motion-dur
 - [ ] Un rechargement restaure un état équivalent.
 - [ ] Les trois échecs de la §7.2 sont traités.
 
-**Largeurs**
+**Largeurs et hauteurs**
 
-- [ ] Vérifié aux trois régimes de `D-28`.
+- [ ] Vérifié aux trois régimes de `D-28`, **réellement redimensionné** — pas déduit du code.
 - [ ] Sous 1024 px, le panneau passe au-dessus, pas en dessous.
 - [ ] Aucun contenu ne disparaît en régime resserré.
+- [ ] Au-delà du plafond de `D-45`, le cadre est centré et ne s'élargit plus.
+- [ ] Le bloc décisionnel est centré verticalement, et **sa hauteur ne bouge d'aucun état à l'autre** (`D-46`).
+- [ ] Vérifié sur une fenêtre courte : le bloc s'aligne en haut et la page défile, sans troncature.
 
 **Thèmes et accessibilité**
 
 - [ ] Vérifié dans les deux thèmes, réellement (`D-24`).
+- [ ] Tout contenu passif est à deux tons, et **son amorce noire se suffit seule** (`D-48`).
+- [ ] ⚠️ `Q-14` : la case « parcours clavier complet » **ne peut pas être cochée** tant que le survol porte seul.
 - [ ] Parcours clavier complet et ordonné.
 - [ ] Aucune information portée par la couleur seule.
 - [ ] Le contenu de panneau fermé est absent de l'arbre d'accessibilité.
@@ -262,6 +289,10 @@ Tout écran respecte `prefers-reduced-motion` : `D-34` fait tomber `--motion-dur
 |---|---|
 | `D-34` | Quelles transitions existent entre les états de la §4.2 — la paire durée/easing est arrêtée, son emploi ne l'est pas |
 | `D-13` | Raccourci clavier du déclencheur `Indice` |
+| `Q-12` | Contraste de `--text-secondary` — en dessous du seuil du texte dans les deux thèmes |
+| `Q-13` | Le repère de position et `Progression` portent la même phrase — lequel des deux existe |
+| `Q-14` | Clavier, tactile et régime étroit : le survol porte seul |
+| `D-49` | Comment on passe du retour à la notion — `[À VALIDER]`, non implémentable |
 | — | Nombre de questions du parcours : détermine si le récapitulatif de fin défile |
 | — | Forme de l'exercice appliqué, donc son gabarit (§6.4) |
 
@@ -273,3 +304,5 @@ Tout écran respecte `prefers-reduced-motion` : `D-34` fait tomber `--motion-dur
 |---|---|
 | 2026-07-30 | Création. Débloqué par `D-28` (régimes de largeur) et `D-29` (le clic sélectionne). Tous les gabarits, V0 et au-delà. Ouvre `Q-11` : la bascule de thème n'a pas de domicile en V0. |
 | 2026-07-30 | `Q-11` résolue par `D-35` (§6.3). Mouvement réduit précisé par `D-34` (§7.4). Le `Marqueur` n'est plus `[AV]` (`D-33`). |
+| 2026-07-31 | `D-48` à `D-51` : les déclencheurs disparaissent, le contenu passif est appelé par la latence puis le survol, et s'écrit à deux tons. `G4` **révoquée**. État C réécrit. Ouvre `Q-14`. |
+| 2026-07-31 | **§2.1 et §2.2 créés** : la répartition de la hauteur et de la largeur n'était spécifiée nulle part, ce qui a produit un écran à moitié mort. `D-46` (centrage vertical à hauteur constante), `D-45` (cadre plafonné), `D-47` (déclencheur lisible au repos). Checklist §8 durcie. Ouvre `Q-12` et `Q-13`. |

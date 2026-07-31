@@ -127,7 +127,7 @@ export function chargerContenu(baseDir: string = CONTENT_DIR): Contenu {
     if (justes !== 1) {
       erreurs.push(`${fichier} : "${q.id}" a ${justes} option(s) juste(s), attendu exactement 1 (§4.2)`);
     }
-    const textesCharte = [q.enonce, q.indice, q.retour.amorce, q.retour.suite, ...q.options.map((o) => o.texte)].join("\n");
+    const textesCharte = [q.enonce, q.indice.amorce, q.indice.suite, q.retour.amorce, q.retour.suite, ...q.options.map((o) => o.texte)].join("\n");
     violationsCharte(compterCharte(textesCharte)).forEach((v) =>
       erreurs.push(`${fichier} (charte §7bis) : ${v}`)
     );

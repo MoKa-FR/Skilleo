@@ -4,7 +4,7 @@ import { EcranQuestion } from "./EcranQuestion";
 
 export default async function PageQuestion({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const { questions, notions } = getContenu();
+  const { questions } = getContenu();
   const question = questions.get(id);
   const position = localiserQuestion(id);
 
@@ -14,16 +14,12 @@ export default async function PageQuestion({ params }: { params: Promise<{ id: s
     redirect("/");
   }
 
-  const notion = notions.get(question.notion);
-  if (!notion) {
-    // Ne peut pas arriver si le contenu a passé la validation de construction.
-    redirect("/");
-  }
-
+  // La notion (D-37) reste validée à la construction par le chargeur — elle
+  // n'a simplement plus d'écran qui la révèle en V0 : D-49 marque son
+  // troisième moment `[À VALIDER]`, non implémentable tant que Q-14 est ouverte.
   return (
     <EcranQuestion
       question={question}
-      notion={notion}
       rang={position.rang}
       total={position.total}
       suivanteId={position.suivanteId}

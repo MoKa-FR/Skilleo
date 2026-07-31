@@ -18,7 +18,11 @@ export const questionSchema = z.object({
   source: z.string().min(1).regex(/^[^#]+#[^#]+$/, "attendu : identifiant#ancre"),
   enonce: z.string().min(1).max(140),
   options: z.array(optionSchema).min(2).max(4),
-  indice: z.string().min(1),
+  // D-48 : deux fragments, comme retour — l'amorce se suffit à elle-même.
+  indice: z.object({
+    amorce: z.string().min(1),
+    suite: z.string().min(1),
+  }),
   retour: z.object({
     amorce: z.string().min(1).max(90),
     suite: z.string().min(1),
